@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import messagebox
 import os
 import subprocess
+import logging
 
 # Define the directory to store the text files
 bot_items_dir = os.path.join(os.getenv('LOCALAPPDATA'), 'SRSBot', 'Bot_Items')
@@ -11,6 +12,10 @@ os.makedirs(bot_items_dir, exist_ok=True)
 token_file = os.path.join(bot_items_dir, 'token.txt')
 channel_file = os.path.join(bot_items_dir, 'channel.txt')
 roles_file = os.path.join(bot_items_dir, 'roles.txt')
+log_file = 'Z:\\Testing Logs\\Launcher_Logs.log'
+
+# Configure logging
+logging.basicConfig(filename=log_file, level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def write_data():
     bot_token = token_entry.get()
@@ -27,8 +32,10 @@ def write_data():
             f.write(f"{p_ver_role}\n{verified_role}")
 
         messagebox.showinfo("Success", "Data written successfully!")
+        logging.info("Data written successfully.")
     except Exception as e:
         messagebox.showerror("Error", f"Failed to write data: {e}")
+        logging.error(f"Failed to write data: {e}")
 
 def start_bot():
     try:
@@ -39,17 +46,23 @@ def start_bot():
         # Command to run in the command prompt
         command = f'cmd /k "cd /d {srsbot_dir} && call {activate_script} && python {verifier_script}"'
 
+        # Log the command for debugging purposes
+        logging.debug(f"Executing command: {command}")
+
         # Run the command with administrative privileges
         subprocess.run(['powershell', '-Command', f'Start-Process cmd -ArgumentList \'/k {command}\' -Verb RunAs'])
     except Exception as e:
         messagebox.showerror("Error", f"Failed to start the bot: {e}")
+        logging.error(f"Failed to start the bot: {e}")
 
 def package_manager():
     # Implement the logic for the package manager
     messagebox.showinfo("Info", "Opening the package manager...")
+    logging.info("Opening the package manager.")
 
 def quit_app():
     root.quit()
+    logging.info("Application closed.")
 
 # Create the main window
 root = tk.Tk()
