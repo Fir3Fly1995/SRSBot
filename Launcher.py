@@ -72,11 +72,11 @@ def start_bot():
         activate_script = os.path.join(srsbot_dir, 'srsenv', 'Scripts', 'activate.bat')
         verifier_script = os.path.join(srsbot_dir, 'Verifier.py')
 
-        # Command to run in the command prompt
-        command = f'cmd /k "cd /d {srsbot_dir} && call {activate_script} && python {verifier_script}"'
+        # Command to start the bot
+        command = f'python {verifier_script}'
 
         # Log the command for debugging purposes
-        logging.debug(f"Executing command: {command}")
+        logging.debug(f"Command to start bot: {command}")
 
         # Copy the command to the clipboard
         pyperclip.copy(command)
@@ -84,8 +84,8 @@ def start_bot():
         # Show a message box with instructions
         messagebox.showinfo("Info", "The command to start the bot has been copied to your clipboard. Please click anywhere in the open terminal window, paste the command, and hit Enter.")
 
-        # Run the command with administrative privileges
-        subprocess.run(['powershell', '-Command', f'Start-Process cmd -ArgumentList \'/k {command}\' -Verb RunAs'])
+        # Start the virtual environment
+        subprocess.run(['powershell', '-Command', f'Start-Process cmd -ArgumentList \'/k cd /d {srsbot_dir} && call {activate_script}\' -Verb RunAs'])
     except Exception as e:
         messagebox.showerror("Error", f"Failed to start the bot: {e}")
         logging.error(f"Failed to start the bot: {e}")
