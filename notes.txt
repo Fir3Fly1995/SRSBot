@@ -69,3 +69,26 @@ Step 5: Updating the package manager
         package_manager.py            -->     %LAD%\SRSBot\Updater\package_manager.py
     this will be directly integrated into the SRSBot\updater folder, no need for a manifest or anything like that, it will just outright replace the files directly from GitHub. 
 We will handle a more discrete method for ensuring the most up-to-date pkg_mgr is available for use by integrating it into another function of the launcher. 
+
+
+Tickers
+    Launcher
+        Default to display is "Standing By..." 
+        on click of Package manager
+            "Downloading Package Manager Updates" during the download. 
+            "Installing Updates" Display this for 3 seconds (because the updates are installed as they are downloaded, its a fake delayy to give the illusion of updates happening)
+            "Launching Package Manager" Display this for 3 seconds, then continue to launch the package manager, and to close the launcher as specified above. 
+        
+        On click of "Write Data" button
+            "Data saved Successfully..." on successful completion for 3 seconds, then revert back to "Standing By..."
+
+        On Click of "Start Bot"
+            "Starting Bot..." for 3 seconds, then proceed to the next step of the launch process. 
+            "Standing By..." after the 3 second timer expires. 
+            Pop-Up Dialogue Box --> The bot has been started. \n\n The command to start the bot itself is copied to your clipboard. \n\n 1. Click on the PowerShell (blue space in the opened window) \n 2. Press Ctrl + V \n 3. Hit the enter key \n\nThank you!
+                offer OK option to dismiss the dialogue box. 
+        On click of "Quit"
+            "Terminating Launcher. \n Thank you for using the SRS Bot." Wait 3 seconds, then terminate the launcher. 
+
+    package_manager
+        Default to display is "Waiting Input"
