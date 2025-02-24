@@ -69,7 +69,7 @@ def write_data():
 def start_bot():
     try:
         srsbot_dir = os.path.join(os.getenv('LOCALAPPDATA'), 'SRSBot', 'bot_files')
-        activate_script = os.path.join(srsbot_dir, 'srsenv', 'Scripts', 'activate.bat')
+        activate_script = os.path.join(srsbot_dir, 'srsenv', 'Scripts', 'Activate.ps1')
         verifier_script = os.path.join(srsbot_dir, 'Verifier.py')
 
         # Command to start the bot
@@ -82,10 +82,10 @@ def start_bot():
         pyperclip.copy(command)
 
         # Show a message box with instructions
-        messagebox.showinfo("Info", "The command to start the bot has been copied to your clipboard. Please click anywhere in the open terminal window, paste the command, and hit Enter.")
+        messagebox.showinfo("Info", "The command to start the bot has been copied to your clipboard. Please click anywhere in the open PowerShell window, paste the command, and hit Enter.")
 
-        # Start the virtual environment
-        subprocess.run(['powershell', '-Command', f'Start-Process cmd -ArgumentList \'/k cd /d {srsbot_dir} && call {activate_script}\' -Verb RunAs'])
+        # Start the virtual environment in PowerShell
+        subprocess.run(['powershell', '-Command', f'Start-Process powershell -ArgumentList \'-NoExit -Command "cd {srsbot_dir}; . {activate_script}"\' -Verb RunAs'])
     except Exception as e:
         messagebox.showerror("Error", f"Failed to start the bot: {e}")
         logging.error(f"Failed to start the bot: {e}")
