@@ -17,6 +17,26 @@ log_file = 'Z:\\Testing Logs\\Launcher_Logs.log'
 # Configure logging
 logging.basicConfig(filename=log_file, level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
+def read_data():
+    try:
+        if os.path.exists(token_file):
+            with open(token_file, 'r') as f:
+                token_entry.insert(0, f.read().strip())
+        if os.path.exists(channel_file):
+            with open(channel_file, 'r') as f:
+                channel_entry.insert(0, f.read().strip())
+        if os.path.exists(roles_file):
+            with open(roles_file, 'r') as f:
+                roles = f.readlines()
+                if len(roles) > 0:
+                    p_ver_entry.insert(0, roles[0].strip())
+                if len(roles) > 1:
+                    verified_entry.insert(0, roles[1].strip())
+        logging.info("Data read successfully.")
+    except Exception as e:
+        messagebox.showerror("Error", f"Failed to read data: {e}")
+        logging.error(f"Failed to read data: {e}")
+
 def write_data():
     bot_token = token_entry.get()
     welcome_channel = channel_entry.get()
@@ -90,6 +110,9 @@ tk.Button(root, text="Write Data", command=write_data).grid(row=4, column=0, pad
 tk.Button(root, text="Package Manager", command=package_manager).grid(row=4, column=1, padx=10, pady=10)
 tk.Button(root, text="Start Bot", command=start_bot).grid(row=5, column=0, padx=10, pady=10)
 tk.Button(root, text="Quit", command=quit_app).grid(row=5, column=1, padx=10, pady=10)
+
+# Read the data from files and populate the entry fields
+read_data()
 
 # Run the main loop
 root.mainloop()
