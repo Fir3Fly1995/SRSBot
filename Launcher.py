@@ -75,27 +75,22 @@ def start_bot():
     logging.debug("Starting bot")
     try:
         srsbot_dir = os.path.join(os.getenv('LOCALAPPDATA'), 'SRSBot', 'bot_files')
-        python_executable = os.path.join(os.getenv('LOCALAPPDATA'), 'SRSBot', 'python', 'python.exe')
-        activate_script = os.path.join(srsbot_dir, 'srsenv', 'Scripts', 'Activate.ps1')
-        verifier_script = os.path.join(srsbot_dir, 'Verifier.py')
-
-        # Command to start the bot
-        command = f'& "{python_executable}" "{verifier_script}"'
+        startbot_script = os.path.join(srsbot_dir, 'startbot.bat')
 
         # Log the command for debugging purposes
-        logging.debug(f"Command to start bot: {command}")
+        logging.debug(f"Command to start bot: {startbot_script}")
 
         # Copy the command to the clipboard
-        pyperclip.copy(command)
+        pyperclip.copy(startbot_script)
         logging.debug("Command copied to clipboard")
 
         # Show a message box with instructions
         messagebox.showinfo("Info", "The bot has been started. The command to start the bot itself is copied to your clipboard.\n\n1. Click on the PowerShell (blue space in the opened window)\n2. Press Ctrl + V\n3. Hit the enter key\n\nThank you!")
         update_ticker("Starting Bot...")
 
-        # Start the virtual environment in PowerShell with execution policy bypass
-        logging.debug(f"Running PowerShell to start virtual environment: {activate_script}")
-        subprocess.run(['powershell', '-Command', f'Start-Process powershell -ArgumentList \'-NoExit -ExecutionPolicy Bypass -Command "cd {srsbot_dir}; . {activate_script}; {command}"\' -Verb RunAs'])
+        # Start the batch file in PowerShell with execution policy bypass
+        logging.debug(f"Running PowerShell to start batch file: {startbot_script}")
+        subprocess.run(['powershell', '-Command', f'Start-Process powershell -ArgumentList \'-NoExit -ExecutionPolicy Bypass -Command "{startbot_script}"\' -Verb RunAs'])
         logging.debug("PowerShell command executed")
     except Exception as e:
         messagebox.showerror("Error", f"Failed to start the bot: {e}")
