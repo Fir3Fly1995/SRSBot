@@ -8,7 +8,7 @@ import os
 import logging
 
 # Configure logging
-log_file = 'Z:\\Testing Logs\\Bot_Log.log'
+log_file = os.path.join(os.getenv('LOCALAPPDATA'), 'SRSBot', 'bot_files', 'Verifier.log')
 logging.basicConfig(filename=log_file, level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Define the paths to the variable files
@@ -139,6 +139,18 @@ async def verify_command(interaction: discord.Interaction, rsi_username: str = N
         else:
             await interaction.followup.send("Please initiate the verification process by typing `/verify` first.", ephemeral=True)
             logging.warning(f"Verification process not initiated for user: {interaction.user}")
+
+# Example function with logging
+def example_function():
+    try:
+        logging.info("Starting example function")
+        # Your code here
+        logging.info("Example function completed successfully")
+    except Exception as e:
+        logging.error(f"Error in example function: {e}")
+
+# Call the example function
+example_function()
 
 # Run the bot
 if BOT_TOKEN:

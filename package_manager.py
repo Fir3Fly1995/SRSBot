@@ -5,6 +5,7 @@ import subprocess
 import shutil
 import requests
 import logging
+import threading
 
 # Configure logging
 log_file = 'Z:\\Testing Logs\\Package_Manager_Logs.log'
@@ -88,6 +89,10 @@ def prompt_return_to_launcher():
         subprocess.run(['powershell', '-Command', f'Start-Process "{launcher_path}" -Verb RunAs'])
         root.quit()
 
+def run_in_thread(func):
+    logging.debug(f"Running function {func.__name__} in a new thread")
+    threading.Thread(target=func).start()
+
 # Create the main window
 root = tk.Tk()
 root.title("SRSBot Package Manager")
@@ -99,13 +104,13 @@ heading.grid(row=0, column=0, columnspan=2, pady=10)
 # Create buttons
 button_width = 20
 
-update_button = tk.Button(root, text="Update Bot", command=update_bot, width=button_width)
+update_button = tk.Button(root, text="Update Bot", command=lambda: run_in_thread(update_bot), width=button_width)
 update_button.grid(row=1, column=0, padx=10, pady=10)
 
 share_button = tk.Button(root, text="Share Bot", command=share_bot, width=button_width)
 share_button.grid(row=2, column=0, padx=10, pady=10)
 
-uninstall_button = tk.Button(root, text="Uninstall Bot", command=uninstall_bot, width=button_width)
+uninstall_button = tk.Button(root, text="Uninstall Bot", command=lambda: run_in_thread(uninstall_bot), width=button_width)
 uninstall_button.grid(row=1, column=1, padx=10, pady=10)
 
 quit_button = tk.Button(root, text="Quit", command=quit_app, width=button_width)

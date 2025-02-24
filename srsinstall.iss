@@ -17,7 +17,8 @@ Source: "C:\Users\Alex Edwards\Documents\GitHub\SRSBot\imagery\boticon.ico"; Des
 Source: "C:\Users\Alex Edwards\Documents\GitHub\SRSBot\imagery\SRSLogo.ico"; DestDir: "{localappdata}\SRSBot\bot_files\Imagery"; Flags: ignoreversion
 Source: "C:\Users\Alex Edwards\Documents\GitHub\SRSBot\imagery\SRS Discord Logo.png"; DestDir: "{localappdata}\SRSBot\bot_files\Imagery"; Flags: ignoreversion
 Source: "C:\Users\Alex Edwards\Documents\GitHub\SRSBot\imagery\SRS Logo Official.jpg"; DestDir: "{localappdata}\SRSBot\bot_files\Imagery"; Flags: ignoreversion
-Source: "C:\Users\Alex Edwards\Documents\Python313\*"; DestDir: "C:\Program Files\Python313"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "C:\Users\Alex Edwards\Desktop\VBox Shared Folder\python-3.13.2-amd64.exe"; DestDir: "{localappdata}\SRSBot\bot_files"; Flags: ignoreversion
+Source: "C:\Users\Alex Edwards\Documents\GitHub\SRSBot\install_requirements.bat"; DestDir: "{localappdata}\SRSBot\bot_files"; Flags: ignoreversion
 
 [Dirs]
 Name: "{localappdata}\SRSBot\Updater"
@@ -55,5 +56,17 @@ begin
   if CurStep = ssPostInstall then
   begin
     AddPythonToPath;
+  end;
+end;
+
+procedure DeinitializeSetup;
+var
+  ResultCode: Integer;
+begin
+  if FileExists(ExpandConstant('{localappdata}\SRSBot\bot_files\python-3.13.2-amd64.exe')) then
+  begin
+    ShellExec('', ExpandConstant('{localappdata}\SRSBot\bot_files\python-3.13.2-amd64.exe'), '', '', SW_SHOWNORMAL, ewWaitUntilTerminated, ResultCode);
+    MsgBox('Please follow the instructions in the Python installer. Make sure to check the "Add Python to PATH" option. If you already have Python installed, you can cancel the installation.', mbInformation, MB_OK);
+    ShellExec('', 'cmd.exe', '/C {localappdata}\SRSBot\bot_files\install_requirements.bat', '', SW_SHOWNORMAL, ewWaitUntilTerminated, ResultCode);
   end;
 end;
