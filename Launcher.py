@@ -4,6 +4,8 @@ import os
 import subprocess
 import logging
 import pyperclip  # Import pyperclip to copy text to clipboard
+import requests
+import time
 
 # Define the directory to store the text files
 bot_items_dir = os.path.join(os.getenv('LOCALAPPDATA'), 'SRSBot', 'Bot_Items')
@@ -17,6 +19,12 @@ log_file = 'Z:\\Testing Logs\\Launcher_Logs.log'
 
 # Configure logging
 logging.basicConfig(filename=log_file, level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+
+def fetch_file(url, dest):
+    response = requests.get(url)
+    response.raise_for_status()
+    with open(dest, 'wb') as f:
+        f.write(response.content)
 
 def read_data():
     try:
@@ -84,13 +92,30 @@ def start_bot():
 
 def package_manager():
     try:
-        package_manager_path = os.path.join(os.getenv('LOCALAPPDATA'), 'SRSBot', 'Updater', 'package_manager.exe')
+        updater_dir = os.path.join(os.getenv('LOCALAPPDATA'), 'SRSBot', 'Updater')
+        os.makedirs(updater_dir, exist_ok=True)
+
+        # Fetch and update package manager files from GitHub
+        fetch_file('https://github.com/Fir3Fly1995/SRSBot/raw/main/dist/package_manager.exe', os.path.join(updater_dir, 'package_manager.exe'))
+        fetch_file('https://github.com/Fir3Fly1995/SRSBot/raw/main/package_manager.spec', os.path.join(updater_dir, 'package_manager.spec'))
+        fetch_file('https://github.com/Fir3Fly1995/SRSBot/raw/main/package_manager.py', os.path.join(updater_dir, 'package_manager.py'))
+
+        logging.info("Package manager files fetched and updated successfully.")
+
+        # Wait a moment before launching the package manager
+        time.sleep(2)
+
+        package_manager_path = os.path.join(updater_dir, 'package_manager.exe')
         # Run the package manager with administrative privileges
         subprocess.run(['powershell', '-Command', f'Start-Process "{package_manager_path}" -Verb RunAs'])
         logging.info("Opened the package manager with elevated permissions.")
+
+        # Close the launcher
+        root.quit()
+        logging.info("Launcher closed.")
     except Exception as e:
-        messagebox.showerror("Error", f"Failed to open the package manager: {e}")
-        logging.error(f"Failed to open the package manager: {e}")
+        messagebox.showerror("Error", f"Failed to update and open the package manager: {e}")
+        logging.error(f"Failed to update and open the package manager: {e}")
 
 def quit_app():
     root.quit()

@@ -42,7 +42,7 @@ To start he update process, The updater needs to go to the github repository and
         Verifier.py                   -->     %LAD%\SRSBot\bot_files\Verifier.py
 
 Step 4: Removing the SRSBot and all files. 
-    1. The updater will rewrite the unins000.dll file to include everything within the SRSBot folder, and the folder itself, so that the user can completely remove the bot itself. 
+    1. The updater will rewrite the unins000.dat file to include everything within the SRSBot folder, and the folder itself, so that the user can completely remove the bot itself. 
     2. The updater will copy the contents of the bot_items folder and create a file on the users desktop called "Saved Bot Info.txt"
         The file will be laid out as below:
 
@@ -58,7 +58,8 @@ Step 4: Removing the SRSBot and all files.
         Verified Role
         "   "
     3. The updater will then delete the contents of bot_items
-    4. The updater will then run unins000.exe and will close the updater, launcher and Verifier.py applications so the uninstall can be done. 
+    4. The updater will then run unins000.exe
+    5. The Updater will close itself the launcher and Verifier.py applications so the uninstall can be done. 
 
 Step 5: Updating the package manager
     1. Add a butotn called "pkg" to update the package manager itself. 

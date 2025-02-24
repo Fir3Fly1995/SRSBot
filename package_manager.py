@@ -31,7 +31,7 @@ def update_bot():
 
 def uninstall_bot():
     try:
-        # Save bot info to desktop
+        # Step 1: Save bot info to desktop
         with open(saved_info_file, 'w') as f:
             with open(os.path.join(bot_items_dir, 'token.txt'), 'r') as token_file:
                 f.write(f"Discord Bot Token\n{token_file.read()}\n\n")
@@ -42,46 +42,49 @@ def uninstall_bot():
                 f.write(f"Pre-Verification Role\n{roles[0]}\n\n")
                 f.write(f"Verified Role\n{roles[1]}\n\n")
 
-        # Delete bot items
+        # Step 2: Delete bot items
         shutil.rmtree(bot_items_dir)
 
-        # Run uninstaller
+        # Step 3: Run uninstaller
         uninstaller = os.path.join(srsbot_dir, 'unins000.exe')
         subprocess.run([uninstaller], check=True)
-        messagebox.showinfo("Success", "Bot uninstalled successfully!")
+
+        # Step 4: Close the package manager and launcher
+        root.quit()
+        logging.info("Package manager and launcher closed.")
     except Exception as e:
         messagebox.showerror("Error", f"Failed to uninstall bot: {e}")
+        logging.error(f"Failed to uninstall bot: {e}")
 
 def share_bot():
     # Implement the logic to bundle up the bot to share it with friends
     messagebox.showinfo("Info", "Share bot functionality is not yet implemented.")
 
-def update_package_manager():
-    try:
-        # Fetch and update package manager files from GitHub
-        fetch_file('https://github.com/Fir3Fly1995/SRSBot/raw/main/dist/package_manager.exe', os.path.join(updater_dir, 'package_manager.exe'))
-        fetch_file('https://github.com/Fir3Fly1995/SRSBot/raw/main/package_manager.spec', os.path.join(updater_dir, 'package_manager.spec'))
-        fetch_file('https://github.com/Fir3Fly1995/SRSBot/raw/main/package_manager.py', os.path.join(updater_dir, 'package_manager.py'))
-        messagebox.showinfo("Success", "Package manager updated successfully!")
-    except Exception as e:
-        messagebox.showerror("Error", f"Failed to update package manager: {e}")
+def quit_app():
+    root.quit()
 
 # Create the main window
 root = tk.Tk()
 root.title("SRSBot Package Manager")
 
+# Create a heading
+heading = tk.Label(root, text="Welcome to SRS Updater", font=("Helvetica", 16))
+heading.grid(row=0, column=0, columnspan=2, pady=10)
+
 # Create buttons
-update_button = tk.Button(root, text="Update Bot", command=update_bot)
-update_button.pack(pady=10)
+button_width = 20
 
-uninstall_button = tk.Button(root, text="Uninstall Bot", command=uninstall_bot)
-uninstall_button.pack(pady=10)
+update_button = tk.Button(root, text="Update Bot", command=update_bot, width=button_width)
+update_button.grid(row=1, column=0, padx=10, pady=10)
 
-share_button = tk.Button(root, text="Share Bot", command=share_bot)
-share_button.pack(pady=10)
+share_button = tk.Button(root, text="Share Bot", command=share_bot, width=button_width)
+share_button.grid(row=2, column=0, padx=10, pady=10)
 
-update_pkg_button = tk.Button(root, text="Update Package Manager", command=update_package_manager)
-update_pkg_button.pack(pady=10)
+uninstall_button = tk.Button(root, text="Uninstall Bot", command=uninstall_bot, width=button_width)
+uninstall_button.grid(row=1, column=1, padx=10, pady=10)
+
+quit_button = tk.Button(root, text="Quit", command=quit_app, width=button_width)
+quit_button.grid(row=2, column=1, padx=10, pady=10)
 
 # Run the application
 root.mainloop()
