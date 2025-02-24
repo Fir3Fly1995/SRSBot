@@ -5,6 +5,9 @@
 		},
 		{
 			"path": "../Manifest Repo"
+		},
+		{
+			"path": "../../../Desktop/VBox Shared Folder/Testing Logs"
 		}
 	],
 	"settings": {}
