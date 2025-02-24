@@ -28,3 +28,29 @@ Name: "{commondesktop}\SRSBot Launcher"; Filename: "{localappdata}\SRSBot\bot_fi
 
 [Run]
 Filename: "{localappdata}\SRSBot\bot_files\Launcher.exe"; Description: "Launch SRSBot"; Flags: nowait postinstall skipifsilent
+
+[Code]
+procedure AddPythonToPath;
+var
+  Path: string;
+  PythonPath: string;
+begin
+  PythonPath := 'C:\Program Files\Python313';
+  if RegQueryStringValue(HKEY_LOCAL_MACHINE, 'SYSTEM\CurrentControlSet\Control\Session Manager\Environment', 'Path', Path) then
+  begin
+    if Pos(PythonPath, Path) = 0 then
+    begin
+      Path := Path + ';' + PythonPath;
+      RegWriteStringValue(HKEY_LOCAL_MACHINE, 'SYSTEM\CurrentControlSet\Control\Session Manager\Environment', 'Path', Path);
+      SendMessageTimeout(HWND_BROADCAST, WM_SETTINGCHANGE, 0, LPARAM(PChar('Environment')), SMTO_ABORTIFHUNG, 5000, PDWORD(nil)^);
+    end;
+  end;
+end;
+
+procedure CurStepChanged(CurStep: TSetupStep);
+begin
+  if CurStep = ssPostInstall then
+  begin
+    AddPythonToPath;
+  end;
+end;

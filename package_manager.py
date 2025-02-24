@@ -16,6 +16,7 @@ bot_files_dir = os.path.join(srsbot_dir, 'bot_files')
 updater_dir = os.path.join(srsbot_dir, 'Updater')
 bot_items_dir = os.path.join(srsbot_dir, 'Bot_Items')
 saved_info_file = os.path.join(os.path.expanduser('~'), 'Desktop', 'Saved Bot Info.txt')
+python_dir = 'C:\\Program Files\\Python313'
 
 def fetch_file(url, dest):
     logging.debug(f"Fetching file from {url} to {dest}")
@@ -56,12 +57,17 @@ def uninstall_bot():
         shutil.rmtree(bot_items_dir)
         logging.info("Bot items deleted")
 
-        # Step 3: Run uninstaller
+        # Step 3: Delete Python installation
+        if os.path.exists(python_dir):
+            shutil.rmtree(python_dir)
+            logging.info("Python installation deleted")
+
+        # Step 4: Run uninstaller
         uninstaller = os.path.join(srsbot_dir, 'unins000.exe')
         subprocess.run([uninstaller], check=True)
         logging.info("Uninstaller run successfully")
 
-        # Step 4: Close the package manager and launcher
+        # Step 5: Close the package manager and launcher
         root.quit()
         logging.info("Package manager and launcher closed")
     except Exception as e:
