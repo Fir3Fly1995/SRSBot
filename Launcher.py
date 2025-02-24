@@ -75,10 +75,12 @@ def start_bot():
     logging.debug("Starting bot")
     try:
         srsbot_dir = os.path.join(os.getenv('LOCALAPPDATA'), 'SRSBot', 'bot_files')
+        python_executable = os.path.join(os.getenv('LOCALAPPDATA'), 'SRSBot', 'python', 'python.exe')
         activate_script = os.path.join(srsbot_dir, 'srsenv', 'Scripts', 'Activate.ps1')
+        verifier_script = os.path.join(srsbot_dir, 'Verifier.py')
 
         # Command to start the bot
-        command = 'python Verifier.py'
+        command = f'{python_executable} {verifier_script}'
 
         # Log the command for debugging purposes
         logging.debug(f"Command to start bot: {command}")
@@ -93,7 +95,7 @@ def start_bot():
 
         # Start the virtual environment in PowerShell with execution policy bypass
         logging.debug(f"Running PowerShell to start virtual environment: {activate_script}")
-        subprocess.run(['powershell', '-Command', f'Start-Process powershell -ArgumentList \'-NoExit -ExecutionPolicy Bypass -Command "cd {srsbot_dir}; . {activate_script}"\' -Verb RunAs'])
+        subprocess.run(['powershell', '-Command', f'Start-Process powershell -ArgumentList \'-NoExit -ExecutionPolicy Bypass -Command "cd {srsbot_dir}; . {activate_script}; {command}"\' -Verb RunAs'])
         logging.debug("PowerShell command executed")
     except Exception as e:
         messagebox.showerror("Error", f"Failed to start the bot: {e}")

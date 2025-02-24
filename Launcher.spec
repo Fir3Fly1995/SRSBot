@@ -2,7 +2,7 @@
 
 
 a = Analysis(
-    ['Launcher.py'],
+    ['launcher.py'],
     pathex=[],
     binaries=[],
     datas=[],
@@ -22,7 +22,7 @@ exe = EXE(
     a.binaries,
     a.datas,
     [],
-    name='Launcher',
+    name='launcher',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
@@ -35,5 +35,5 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon=['C:\\Users\\Alex Edwards\\Documents\\GitHub\\SRSBot\\imagery\\boticon.ico'],
+    icon=['imagery\\BotIcon.ico'],
 )
