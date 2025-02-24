@@ -96,7 +96,7 @@ async def verify_command(interaction: discord.Interaction, rsi_username: str = N
             try:
                 url = f"https://robertsspaceindustries.com/en/citizens/{rsi_username}"
                 logging.debug(f"Fetching RSI profile from URL: {url}")
-                response = requests.get(url)
+                response = requests.get(url, verify=False)  # Disable SSL verification
                 response.raise_for_status()  # Raise an exception for bad status codes (4xx or 5xx)
                 logging.debug(f"RSI profile fetched successfully for user: {interaction.user}")
 
