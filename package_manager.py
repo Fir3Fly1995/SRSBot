@@ -63,6 +63,13 @@ def share_bot():
 def quit_app():
     root.quit()
 
+def prompt_return_to_launcher():
+    response = messagebox.askyesno("Return to Launcher", "Would you like to return to the launcher?")
+    if response:
+        launcher_path = os.path.join(bot_files_dir, 'Launcher.exe')
+        subprocess.run(['powershell', '-Command', f'Start-Process "{launcher_path}" -Verb RunAs'])
+        root.quit()
+
 # Create the main window
 root = tk.Tk()
 root.title("SRSBot Package Manager")
@@ -85,6 +92,10 @@ uninstall_button.grid(row=1, column=1, padx=10, pady=10)
 
 quit_button = tk.Button(root, text="Quit", command=quit_app, width=button_width)
 quit_button.grid(row=2, column=1, padx=10, pady=10)
+
+# Add a button to prompt the user to return to the launcher
+return_button = tk.Button(root, text="Return to Launcher", command=prompt_return_to_launcher, width=button_width)
+return_button.grid(row=3, column=0, columnspan=2, padx=10, pady=10)
 
 # Run the application
 root.mainloop()
