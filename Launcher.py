@@ -80,7 +80,7 @@ def start_bot():
         verifier_script = os.path.join(srsbot_dir, 'Verifier.py')
 
         # Command to start the bot
-        command = f'{python_executable} {verifier_script}'
+        command = f'& "{python_executable}" "{verifier_script}"'
 
         # Log the command for debugging purposes
         logging.debug(f"Command to start bot: {command}")

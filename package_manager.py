@@ -21,8 +21,6 @@ def fetch_file(url, dest):
 def update_bot():
     try:
         # Fetch and update files from GitHub
-        fetch_file('https://github.com/Fir3Fly1995/SRSBot/raw/main/Launcher.spec', os.path.join(bot_files_dir, 'Launcher.spec'))
-        fetch_file('https://github.com/Fir3Fly1995/SRSBot/raw/main/Launcher.py', os.path.join(bot_files_dir, 'Launcher.py'))
         fetch_file('https://github.com/Fir3Fly1995/SRSBot/raw/main/dist/Launcher.exe', os.path.join(bot_files_dir, 'Launcher.exe'))
         fetch_file('https://github.com/Fir3Fly1995/SRSBot/raw/main/Verifier.py', os.path.join(bot_files_dir, 'Verifier.py'))
         messagebox.showinfo("Success", "Bot updated successfully!")
