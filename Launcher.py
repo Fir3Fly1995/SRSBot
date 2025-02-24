@@ -6,6 +6,7 @@ import logging
 import pyperclip  # Import pyperclip to copy text to clipboard
 import requests
 import time
+import threading
 
 # Define the directory to store the text files
 bot_items_dir = os.path.join(os.getenv('LOCALAPPDATA'), 'SRSBot', 'Bot_Items')
@@ -60,20 +61,19 @@ def write_data():
         with open(roles_file, 'w') as f:
             f.write(f"{p_ver_role}\n{verified_role}")
 
-        messagebox.showinfo("Success", "Data written successfully!")
+        update_ticker("Data written successfully!")
         logging.info("Data written successfully.")
     except Exception as e:
-        messagebox.showerror("Error", f"Failed to write data: {e}")
+        update_ticker(f"Failed to write data: {e}")
         logging.error(f"Failed to write data: {e}")
 
 def start_bot():
     try:
         srsbot_dir = os.path.join(os.getenv('LOCALAPPDATA'), 'SRSBot', 'bot_files')
         activate_script = os.path.join(srsbot_dir, 'srsenv', 'Scripts', 'Activate.ps1')
-        verifier_script = os.path.join(srsbot_dir, 'Verifier.py')
 
         # Command to start the bot
-        command = f'python {verifier_script}'
+        command = '.\\Verifier.py'
 
         # Log the command for debugging purposes
         logging.debug(f"Command to start bot: {command}")
@@ -82,12 +82,12 @@ def start_bot():
         pyperclip.copy(command)
 
         # Show a message box with instructions
-        messagebox.showinfo("Info", "The command to start the bot has been copied to your clipboard. Please click anywhere in the open PowerShell window, paste the command, and hit Enter.")
+        update_ticker("The command to start the bot has been copied to your clipboard. Please click anywhere in the open PowerShell window, paste the command, and hit Enter.")
 
         # Start the virtual environment in PowerShell with execution policy bypass
         subprocess.run(['powershell', '-Command', f'Start-Process powershell -ArgumentList \'-NoExit -ExecutionPolicy Bypass -Command "cd {srsbot_dir}; . {activate_script}"\' -Verb RunAs'])
     except Exception as e:
-        messagebox.showerror("Error", f"Failed to start the bot: {e}")
+        update_ticker(f"Failed to start the bot: {e}")
         logging.error(f"Failed to start the bot: {e}")
 
 def package_manager():
@@ -95,6 +95,7 @@ def package_manager():
         updater_dir = os.path.join(os.getenv('LOCALAPPDATA'), 'SRSBot', 'Updater')
         os.makedirs(updater_dir, exist_ok=True)
 
+        update_ticker("Getting updates...")
         # Fetch and update package manager files from GitHub
         fetch_file('https://github.com/Fir3Fly1995/SRSBot/raw/main/dist/package_manager.exe', os.path.join(updater_dir, 'package_manager.exe'))
         fetch_file('https://github.com/Fir3Fly1995/SRSBot/raw/main/package_manager.spec', os.path.join(updater_dir, 'package_manager.spec'))
@@ -102,6 +103,7 @@ def package_manager():
 
         logging.info("Package manager files fetched and updated successfully.")
 
+        update_ticker("Installing updates...")
         # Wait a moment before launching the package manager
         time.sleep(2)
 
@@ -110,16 +112,23 @@ def package_manager():
         subprocess.run(['powershell', '-Command', f'Start-Process "{package_manager_path}" -Verb RunAs'])
         logging.info("Opened the package manager with elevated permissions.")
 
+        update_ticker("Launching Package Manager...")
         # Close the launcher
         root.quit()
         logging.info("Launcher closed.")
     except Exception as e:
-        messagebox.showerror("Error", f"Failed to update and open the package manager: {e}")
+        update_ticker(f"Failed to update and open the package manager: {e}")
         logging.error(f"Failed to update and open the package manager: {e}")
 
 def quit_app():
     root.quit()
     logging.info("Application closed.")
+
+def update_ticker(message):
+    ticker_label.config(text=message)
+
+def run_in_thread(func):
+    threading.Thread(target=func).start()
 
 # Create the main window
 root = tk.Tk()
@@ -143,10 +152,14 @@ verified_entry = tk.Entry(root, width=50)
 verified_entry.grid(row=3, column=1, padx=10, pady=5)
 
 # Create and place the buttons
-tk.Button(root, text="Write Data", command=write_data).grid(row=4, column=0, padx=10, pady=10)
-tk.Button(root, text="Package Manager", command=package_manager).grid(row=4, column=1, padx=10, pady=10)
-tk.Button(root, text="Start Bot", command=start_bot).grid(row=5, column=0, padx=10, pady=10)
+tk.Button(root, text="Write Data", command=lambda: run_in_thread(write_data)).grid(row=4, column=0, padx=10, pady=10)
+tk.Button(root, text="Package Manager", command=lambda: run_in_thread(package_manager)).grid(row=4, column=1, padx=10, pady=10)
+tk.Button(root, text="Start Bot", command=lambda: run_in_thread(start_bot)).grid(row=5, column=0, padx=10, pady=10)
 tk.Button(root, text="Quit", command=quit_app).grid(row=5, column=1, padx=10, pady=10)
+
+# Create and place the ticker label
+ticker_label = tk.Label(root, text="Standing by", font=("Helvetica", 10))
+ticker_label.grid(row=6, column=0, columnspan=2, padx=10, pady=10)
 
 # Read the data from files and populate the entry fields
 read_data()
