@@ -171,7 +171,7 @@ log_queue = queue.Queue()
 
 # Run the bot
 def run_bot():
-    logging.debug("run_bot function called")
+    log_queue.put("run_bot function called")
     if BOT_TOKEN:
         log_queue.put("Starting the bot")
         # Create the aiohttp connector within the asynchronous context
@@ -231,5 +231,5 @@ threading.Thread(target=run_bot).start()
 
 # Run the main loop
 logging.debug("Starting main loop")
-logging.debug("Main loop ended")
 root.mainloop()
+logging.debug("Main loop ended")
