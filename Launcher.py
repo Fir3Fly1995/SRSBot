@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
 import os
+import subprocess
 
 # Define the directory to store the text files
 bot_items_dir = os.path.join(os.getenv('LOCALAPPDATA'), 'SRSBot', 'Bot_Items')
@@ -30,8 +31,18 @@ def write_data():
         messagebox.showerror("Error", f"Failed to write data: {e}")
 
 def start_bot():
-    # Implement the logic to start the bot
-    messagebox.showinfo("Info", "Starting the bot...")
+    try:
+        srsbot_dir = os.path.join(os.getenv('LOCALAPPDATA'), 'SRSBot', 'bot_files')
+        activate_script = os.path.join(srsbot_dir, 'srsenv', 'Scripts', 'activate.bat')
+        verifier_script = os.path.join(srsbot_dir, 'Verifier.py')
+
+        # Command to run in the command prompt
+        command = f'cmd /k "cd /d {srsbot_dir} && {activate_script} && python {verifier_script}"'
+
+        # Run the command with administrative privileges
+        subprocess.run(['powershell', '-Command', f'Start-Process cmd -ArgumentList \'/k {command}\' -Verb RunAs'])
+    except Exception as e:
+        messagebox.showerror("Error", f"Failed to start the bot: {e}")
 
 def package_manager():
     # Implement the logic for the package manager
