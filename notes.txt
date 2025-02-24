@@ -92,3 +92,12 @@ Tickers
 
     package_manager
         Default to display is "Waiting Input"
+
+Step 6: Get the bots stuff! 
+The path for the bot token, channel and the names of the roles are located at
+    %Localappdata%\SRSBot\Bot_Items\
+        Token               --> token.txt
+        Welcome Chanenl     --> channel.txt
+        Pending Role        --> roles.txt -> line 1
+        Verified Role       --> roles.txt -> line 2
+    These should be automatically imported to Verifier.py or, placed into Verifier.py or, Verifier.py should look for these items in their appropriate locations! 

@@ -7,8 +7,53 @@ import asyncio
 import os
 import logging
 
-# Set the bot token programmatically
-BOT_TOKEN = os.getenv("DISCORD_BOT_TOKEN")  # Load the token from an environment variable
+# Configure logging
+log_file = 'Z:\\Testing Logs\\Bot_Log.log'
+logging.basicConfig(filename=log_file, level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+
+# Define the paths to the variable files
+bot_items_dir = os.path.join(os.getenv('LOCALAPPDATA'), 'SRSBot', 'Bot_Items')
+token_file_path = os.path.join(bot_items_dir, 'token.txt')
+channel_file_path = os.path.join(bot_items_dir, 'channel.txt')
+roles_file_path = os.path.join(bot_items_dir, 'roles.txt')
+
+# Read the bot token from the file
+BOT_TOKEN = None
+try:
+    with open(token_file_path, 'r') as token_file:
+        BOT_TOKEN = token_file.read().strip()
+    logging.debug(f"Bot token read successfully: {BOT_TOKEN}")
+except Exception as e:
+    logging.error(f"Failed to read bot token: {e}")
+
+# Read the welcome channel from the file
+WELCOME_CHANNEL = None
+try:
+    with open(channel_file_path, 'r') as channel_file:
+        WELCOME_CHANNEL = channel_file.read().strip()
+    logging.debug(f"Welcome channel read successfully: {WELCOME_CHANNEL}")
+except Exception as e:
+    logging.error(f"Failed to read welcome channel: {e}")
+
+# Read the roles from the file
+P_VER_ROLE = None
+VERIFIED_ROLE = None
+try:
+    with open(roles_file_path, 'r') as roles_file:
+        roles = roles_file.readlines()
+        if len(roles) > 0:
+            P_VER_ROLE = roles[0].strip()
+        if len(roles) > 1:
+            VERIFIED_ROLE = roles[1].strip()
+    logging.debug(f"P-Ver role read successfully: {P_VER_ROLE}")
+    logging.debug(f"Verified role read successfully: {VERIFIED_ROLE}")
+except Exception as e:
+    logging.error(f"Failed to read roles: {e}")
+
+# Ensure the bot token is a string
+if not isinstance(BOT_TOKEN, str):
+    logging.error(f"Invalid bot token type: {type(BOT_TOKEN)}")
+    raise TypeError(f'expected token to be a str, received {type(BOT_TOKEN).__name__} instead')
 
 intents = discord.Intents.default()
 intents.message_content = True  # Enable reading message content
@@ -16,10 +61,6 @@ bot = commands.Bot(command_prefix="!", intents=intents)  # Keep prefix for other
 
 verification_codes = {}
 verification_messages = {}
-
-# Configure logging
-log_file = 'Z:\\Testing Logs\\Bot_Log.log'
-logging.basicConfig(filename=log_file, level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 @bot.event
 async def on_ready():
@@ -65,14 +106,14 @@ async def verify_command(interaction: discord.Interaction, rsi_username: str = N
                     bio_text = bio_element.text.strip()
                     logging.debug(f"Bio text found: {bio_text}")
                     if code in bio_text:
-                        verified_role = discord.utils.get(interaction.guild.roles, name="Verified")  # Gets the role object
-                        p_ver_role = discord.utils.get(interaction.guild.roles, name="P-Ver")  # Gets the "P-Ver" role object
+                        verified_role = discord.utils.get(interaction.guild.roles, name=VERIFIED_ROLE)  # Gets the role object
+                        p_ver_role = discord.utils.get(interaction.guild.roles, name=P_VER_ROLE)  # Gets the "P-Ver" role object
                         if verified_role and p_ver_role:
                             await interaction.user.add_roles(verified_role)  # Gives the user the role
                             await interaction.user.edit(nick=rsi_username)  # Change the user's nickname to match their RSI profile name
                             logging.info(f'Attempted to change nickname for user {interaction.user} to {rsi_username}')
 
-                            await interaction.followup.send(f"Your nickname has been updated to: {rsi_username}. You have been verified. You can safely go ahead and remove the code from your profile now if you want to. Welcome to the SRS, Citizen!\n\nHead to <#1328288918990356541> to get chatting!")
+                            await interaction.followup.send(f"Your nickname has been updated to: {rsi_username}. You have been verified. You can safely go ahead and remove the code from your profile now if you want to. Welcome to the SRS, Citizen!\n\nHead to <#{WELCOME_CHANNEL}> to get chatting!")
 
                             await asyncio.sleep(3)  # Wait for 3 seconds before removing the "P-Ver" role
                             await interaction.user.remove_roles(p_ver_role)  # Removes the "P-Ver" role
@@ -100,4 +141,8 @@ async def verify_command(interaction: discord.Interaction, rsi_username: str = N
             await interaction.followup.send("Please initiate the verification process by typing `/verify` first.", ephemeral=True)
             logging.warning(f"Verification process not initiated for user: {interaction.user}")
 
-bot.run(BOT_TOKEN)
+# Run the bot
+if BOT_TOKEN:
+    bot.run(BOT_TOKEN)
+else:
+    logging.error("Bot token is None. Cannot start the bot.")
