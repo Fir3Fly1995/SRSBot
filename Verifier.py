@@ -65,11 +65,8 @@ if not isinstance(BOT_TOKEN, str):
 intents = discord.Intents.default()
 intents.message_content = True  # Enable reading message content
 
-# Create a custom aiohttp connector using certifi
-connector = aiohttp.TCPConnector(ssl=ssl.create_default_context(cafile=certifi.where()))
-
-# Create the bot with the custom connector
-bot = commands.Bot(command_prefix="!", intents=intents, connector=connector)
+# Create the bot without the connector
+bot = commands.Bot(command_prefix="!", intents=intents)
 
 verification_codes = {}
 
@@ -173,6 +170,9 @@ def run_bot():
     logging.debug("run_bot function called")
     if BOT_TOKEN:
         logging.info("Starting the bot")
+        # Create the aiohttp connector within the asynchronous context
+        connector = aiohttp.TCPConnector(ssl=ssl.create_default_context(cafile=certifi.where()))
+        bot.connector = connector
         bot.run(BOT_TOKEN)
     else:
         logging.error("Bot token is None. Cannot start the bot.")
