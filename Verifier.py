@@ -8,7 +8,7 @@ import os
 import logging
 
 # Set the bot token programmatically
-BOT_TOKEN = "TOKEN_HERE"  # Replace with your actual bot token
+BOT_TOKEN = os.getenv("DISCORD_BOT_TOKEN")  # Load the token from an environment variable
 
 intents = discord.Intents.default()
 intents.message_content = True  # Enable reading message content
@@ -22,37 +22,6 @@ logging.basicConfig(level=logging.INFO)
 
 @bot.event
 async def on_ready():
-    license_text = """GNU Affero General Public License (AGPL) with Non-Commercial Clause
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU Affero General Public License as published
-by the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU Affero General Public General Public License for more details.
-
-You should have received a copy of the GNU Affero General Public License
-along with this program. If not, see <https://www.gnu.org/licenses/>.
-
-Additional Restriction: Non-Commercial Use Only
-
-This software is licensed under the GNU Affero General Public License (AGPL)
-with the following additional restriction:
-
-Non-Commercial Use Only:
-You may not use this software or any derivative works for commercial purposes.
-Commercial purposes include, but are not limited to:
-- Selling the software or any derivative works.
-- Using the software in a paid service or product.
-- Monetizing the software through advertisements, subscriptions, or any other means.
-
-If you wish to use this software for commercial purposes, you must obtain
-explicit permission from the original author(s).
-"""
-    print(license_text)
     print(f"{bot.user} is ready and online!")
     logging.info(f'{bot.user} has connected to Discord!')
 
