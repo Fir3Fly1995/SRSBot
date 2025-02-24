@@ -18,7 +18,7 @@ verification_codes = {}
 verification_messages = {}
 
 # Configure logging
-log_file = 'Z:\\Testing Logs\\Verifier_Logs.log'
+log_file = 'Z:\\Testing Logs\\Bot_Log.log'
 logging.basicConfig(filename=log_file, level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 @bot.event
@@ -34,6 +34,7 @@ async def on_ready():
 
 @bot.tree.command(name="verify", description="Verify your RSI profile.")
 async def verify_command(interaction: discord.Interaction, rsi_username: str = None):
+    logging.debug(f"Received verify command from user: {interaction.user} with RSI username: {rsi_username}")
     await interaction.response.defer(ephemeral=True)  # Send an initial response to prevent timeout
 
     user_id = interaction.user.id
@@ -53,13 +54,16 @@ async def verify_command(interaction: discord.Interaction, rsi_username: str = N
             code = verification_codes[user_id]
             try:
                 url = f"https://robertsspaceindustries.com/en/citizens/{rsi_username}"
+                logging.debug(f"Fetching RSI profile from URL: {url}")
                 response = requests.get(url)
                 response.raise_for_status()  # Raise an exception for bad status codes (4xx or 5xx)
+                logging.debug(f"RSI profile fetched successfully for user: {interaction.user}")
 
                 soup = BeautifulSoup(response.content, "html.parser")
                 bio_element = soup.select_one("div.bio div.value")  # More specific CSS selector
                 if bio_element:
                     bio_text = bio_element.text.strip()
+                    logging.debug(f"Bio text found: {bio_text}")
                     if code in bio_text:
                         verified_role = discord.utils.get(interaction.guild.roles, name="Verified")  # Gets the role object
                         p_ver_role = discord.utils.get(interaction.guild.roles, name="P-Ver")  # Gets the "P-Ver" role object
@@ -74,10 +78,10 @@ async def verify_command(interaction: discord.Interaction, rsi_username: str = N
                             await interaction.user.remove_roles(p_ver_role)  # Removes the "P-Ver" role
                             logging.info(f'Removed "P-Ver" role from user {interaction.user}')
 
-                            # Commented out message deletion for redundancy
                             # await delete_messages_after(interaction, 1337856225022578719, delay=8)
                         else:
                             await interaction.followup.send("Error: 'Verified' or 'P-Ver' role not found on this server.")
+                            logging.error(f"'Verified' or 'P-Ver' role not found on this server for user: {interaction.user}")
                         del verification_codes[user_id]  # Remove the code after successful verification
                     else:
                         await interaction.followup.send("Code not found in your RSI bio. Please double-check.", ephemeral=True)  # Ephemeral for errors too

@@ -22,12 +22,15 @@ log_file = 'Z:\\Testing Logs\\Launcher_Logs.log'
 logging.basicConfig(filename=log_file, level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def fetch_file(url, dest):
+    logging.debug(f"Fetching file from {url} to {dest}")
     response = requests.get(url)
     response.raise_for_status()
     with open(dest, 'wb') as f:
         f.write(response.content)
+    logging.debug(f"File fetched successfully from {url} to {dest}")
 
 def read_data():
+    logging.debug("Reading data from files")
     try:
         if os.path.exists(token_file):
             with open(token_file, 'r') as f:
@@ -48,6 +51,7 @@ def read_data():
         logging.error(f"Failed to read data: {e}")
 
 def write_data():
+    logging.debug("Writing data to files")
     bot_token = token_entry.get()
     welcome_channel = channel_entry.get()
     p_ver_role = p_ver_entry.get()
@@ -68,6 +72,7 @@ def write_data():
         logging.error(f"Failed to write data: {e}")
 
 def start_bot():
+    logging.debug("Starting bot")
     try:
         srsbot_dir = os.path.join(os.getenv('LOCALAPPDATA'), 'SRSBot', 'bot_files')
         activate_script = os.path.join(srsbot_dir, 'srsenv', 'Scripts', 'Activate.ps1')
@@ -80,19 +85,23 @@ def start_bot():
 
         # Copy the command to the clipboard
         pyperclip.copy(command)
+        logging.debug("Command copied to clipboard")
 
         # Show a message box with instructions
         messagebox.showinfo("Info", "The bot has been started. The command to start the bot itself is copied to your clipboard.\n\n1. Click on the PowerShell (blue space in the opened window)\n2. Press Ctrl + V\n3. Hit the enter key\n\nThank you!")
         update_ticker("Starting Bot...")
 
         # Start the virtual environment in PowerShell with execution policy bypass
+        logging.debug(f"Running PowerShell to start virtual environment: {activate_script}")
         subprocess.run(['powershell', '-Command', f'Start-Process powershell -ArgumentList \'-NoExit -ExecutionPolicy Bypass -Command "cd {srsbot_dir}; . {activate_script}"\' -Verb RunAs'])
+        logging.debug("PowerShell command executed")
     except Exception as e:
         messagebox.showerror("Error", f"Failed to start the bot: {e}")
         update_ticker(f"Failed to start the bot: {e}")
         logging.error(f"Failed to start the bot: {e}")
 
 def package_manager():
+    logging.debug("Updating package manager")
     try:
         updater_dir = os.path.join(os.getenv('LOCALAPPDATA'), 'SRSBot', 'Updater')
         os.makedirs(updater_dir, exist_ok=True)
@@ -134,6 +143,7 @@ def update_ticker(message):
     root.after(3000, lambda: ticker_label.config(text="Standing by..."))
 
 def run_in_thread(func):
+    logging.debug(f"Running function {func.__name__} in a new thread")
     threading.Thread(target=func).start()
 
 # Create the main window
