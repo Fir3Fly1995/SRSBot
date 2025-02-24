@@ -13,6 +13,7 @@ import threading
 import certifi
 import ssl
 import aiohttp
+import queue
 
 # Configure logging
 log_file = 'Z:\\Testing Logs\\bot_log.log'
@@ -165,17 +166,20 @@ def example_function():
 # Call the example function
 example_function()
 
+# Create a queue for thread-safe logging
+log_queue = queue.Queue()
+
 # Run the bot
 def run_bot():
     logging.debug("run_bot function called")
     if BOT_TOKEN:
-        logging.info("Starting the bot")
+        log_queue.put("Starting the bot")
         # Create the aiohttp connector within the asynchronous context
         connector = aiohttp.TCPConnector(ssl=ssl.create_default_context(cafile=certifi.where()))
         bot.connector = connector
         bot.run(BOT_TOKEN)
     else:
-        logging.error("Bot token is None. Cannot start the bot.")
+        log_queue.put("Bot token is None. Cannot start the bot.")
 
 # Create the main window
 logging.debug("Creating main window")
@@ -210,6 +214,16 @@ logging.getLogger().addHandler(text_handler)
 logging.debug("Creating quit button")
 quit_button = tk.Button(root, text="Quit", command=root.quit)
 quit_button.grid(row=1, column=1, padx=10, pady=10, sticky='e')
+
+# Function to process log messages from the queue
+def process_log_queue():
+    while not log_queue.empty():
+        msg = log_queue.get()
+        logging.info(msg)
+    root.after(100, process_log_queue)
+
+# Start processing the log queue
+root.after(100, process_log_queue)
 
 # Run the bot in a separate thread
 logging.debug("Starting bot thread")
