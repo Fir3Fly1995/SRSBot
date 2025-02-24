@@ -60,7 +60,6 @@ intents.message_content = True  # Enable reading message content
 bot = commands.Bot(command_prefix="!", intents=intents)  # Keep prefix for other commands if needed
 
 verification_codes = {}
-verification_messages = {}
 
 @bot.event
 async def on_ready():

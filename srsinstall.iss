@@ -11,7 +11,8 @@ SolidCompression=yes
 [Files]
 Source: "C:\Users\Alex Edwards\Documents\GitHub\SRSBot\dist\Launcher.exe"; DestDir: "{localappdata}\SRSBot\bot_files"; Flags: ignoreversion
 Source: "C:\Users\Alex Edwards\Documents\GitHub\SRSBot\Verifier.py"; DestDir: "{localappdata}\SRSBot\bot_files"; Flags: ignoreversion
-Source: "C:\Users\Alex Edwards\Documents\GitHub\SRSBot\srsenv\*"; DestDir: "{localappdata}\SRSBot\bot_files\srsenv"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "C:\Users\Alex Edwards\Documents\GitHub\SRSBot\srs_env\*"; DestDir: "{localappdata}\SRSBot\bot_files\srs_env"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "C:\Users\Alex Edwards\Documents\GitHub\SRSBot\Start_bot.bat"; DestDir: "{localappdata}\SRSBot\bot_files"; Flags: ignoreversion
 Source: "C:\Users\Alex Edwards\Documents\GitHub\SRSBot\imagery\boticon.ico"; DestDir: "{localappdata}\SRSBot\bot_files\Imagery"; Flags: ignoreversion
 Source: "C:\Users\Alex Edwards\Documents\GitHub\SRSBot\imagery\SRSLogo.ico"; DestDir: "{localappdata}\SRSBot\bot_files\Imagery"; Flags: ignoreversion
 Source: "C:\Users\Alex Edwards\Documents\GitHub\SRSBot\imagery\SRS Discord Logo.png"; DestDir: "{localappdata}\SRSBot\bot_files\Imagery"; Flags: ignoreversion
