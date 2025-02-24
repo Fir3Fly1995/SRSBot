@@ -1,3 +1,4 @@
+# Checkpoint is at Nr. 30
 import discord
 from discord.ext import commands
 import random
@@ -93,12 +94,13 @@ async def verify_command(interaction: discord.Interaction, rsi_username: str = N
     if rsi_username is None:
         code = str(random.randint(100000, 999999))
         verification_codes[user_id] = code
+        logging.debug(f"Generated verification code: {code} for user: {interaction.user}")
 
         await interaction.followup.send(
             f"{interaction.user.mention}, please enter the below code into the short bio field of your RSI profile found [here](https://robertsspaceindustries.com/en/account/profile). Return and do `/verify {interaction.user.name}` to complete the process.\n\n\n`{code}`",
             ephemeral=True
         )
-        logging.info(f'Generated verification code: {code} for user: {interaction.user}')
+        logging.info(f'Sent verification code to user: {interaction.user}')
 
     else:
         if user_id in verification_codes:
@@ -125,6 +127,7 @@ async def verify_command(interaction: discord.Interaction, rsi_username: str = N
                             logging.info(f'Attempted to change nickname for user {interaction.user} to {rsi_username}')
 
                             await interaction.followup.send(f"Your nickname has been updated to: {rsi_username}. You have been verified. You can safely go ahead and remove the code from your profile now if you want to. Welcome to the SRS, Citizen!\n\nHead to <#{WELCOME_CHANNEL}> to get chatting!")
+                            logging.info(f'Sent verification success message to user: {interaction.user}')
 
                             await asyncio.sleep(3)  # Wait for 3 seconds before removing the "P-Ver" role
                             await interaction.user.remove_roles(p_ver_role)  # Removes the "P-Ver" role
@@ -135,6 +138,7 @@ async def verify_command(interaction: discord.Interaction, rsi_username: str = N
                             await interaction.followup.send("Error: 'Verified' or 'P-Ver' role not found on this server.")
                             logging.error(f"'Verified' or 'P-Ver' role not found on this server for user: {interaction.user}")
                         del verification_codes[user_id]  # Remove the code after successful verification
+                        logging.debug(f"Removed verification code for user: {interaction.user}")
                     else:
                         await interaction.followup.send("Code not found in your RSI bio. Please double-check.", ephemeral=True)  # Ephemeral for errors too
                         logging.warning(f"Code not found in RSI bio for user: {interaction.user}")
@@ -166,6 +170,7 @@ example_function()
 
 # Run the bot
 def run_bot():
+    logging.debug("run_bot function called")
     if BOT_TOKEN:
         logging.info("Starting the bot")
         bot.run(BOT_TOKEN)
