@@ -3,6 +3,7 @@ from tkinter import messagebox
 import os
 import subprocess
 import logging
+import pyperclip  # Import pyperclip to copy text to clipboard
 
 # Define the directory to store the text files
 bot_items_dir = os.path.join(os.getenv('LOCALAPPDATA'), 'SRSBot', 'Bot_Items')
@@ -69,6 +70,12 @@ def start_bot():
         # Log the command for debugging purposes
         logging.debug(f"Executing command: {command}")
 
+        # Copy the command to the clipboard
+        pyperclip.copy(command)
+
+        # Show a message box with instructions
+        messagebox.showinfo("Info", "The command to start the bot has been copied to your clipboard. Please click anywhere in the open terminal window, paste the command, and hit Enter.")
+
         # Run the command with administrative privileges
         subprocess.run(['powershell', '-Command', f'Start-Process cmd -ArgumentList \'/k {command}\' -Verb RunAs'])
     except Exception as e:
@@ -76,9 +83,14 @@ def start_bot():
         logging.error(f"Failed to start the bot: {e}")
 
 def package_manager():
-    # Implement the logic for the package manager
-    messagebox.showinfo("Info", "Opening the package manager...")
-    logging.info("Opening the package manager.")
+    try:
+        package_manager_path = os.path.join(os.getenv('LOCALAPPDATA'), 'SRSBot', 'Updater', 'package_manager.exe')
+        # Run the package manager with administrative privileges
+        subprocess.run(['powershell', '-Command', f'Start-Process "{package_manager_path}" -Verb RunAs'])
+        logging.info("Opened the package manager with elevated permissions.")
+    except Exception as e:
+        messagebox.showerror("Error", f"Failed to open the package manager: {e}")
+        logging.error(f"Failed to open the package manager: {e}")
 
 def quit_app():
     root.quit()

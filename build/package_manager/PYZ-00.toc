@@ -30,6 +30,46 @@
   ('bisect', 'C:\\Program Files\\Python313\\Lib\\bisect.py', 'PYMODULE'),
   ('bz2', 'C:\\Program Files\\Python313\\Lib\\bz2.py', 'PYMODULE'),
   ('calendar', 'C:\\Program Files\\Python313\\Lib\\calendar.py', 'PYMODULE'),
+  ('certifi',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\certifi\\__init__.py',
+   'PYMODULE'),
+  ('certifi.core',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\certifi\\core.py',
+   'PYMODULE'),
+  ('charset_normalizer',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\charset_normalizer\\__init__.py',
+   'PYMODULE'),
+  ('charset_normalizer.api',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\charset_normalizer\\api.py',
+   'PYMODULE'),
+  ('charset_normalizer.cd',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\charset_normalizer\\cd.py',
+   'PYMODULE'),
+  ('charset_normalizer.constant',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\charset_normalizer\\constant.py',
+   'PYMODULE'),
+  ('charset_normalizer.legacy',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\charset_normalizer\\legacy.py',
+   'PYMODULE'),
+  ('charset_normalizer.models',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\charset_normalizer\\models.py',
+   'PYMODULE'),
+  ('charset_normalizer.utils',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\charset_normalizer\\utils.py',
+   'PYMODULE'),
+  ('charset_normalizer.version',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\charset_normalizer\\version.py',
+   'PYMODULE'),
   ('contextlib',
    'C:\\Program Files\\Python313\\Lib\\contextlib.py',
    'PYMODULE'),
@@ -106,11 +146,48 @@
    'PYMODULE'),
   ('fnmatch', 'C:\\Program Files\\Python313\\Lib\\fnmatch.py', 'PYMODULE'),
   ('fractions', 'C:\\Program Files\\Python313\\Lib\\fractions.py', 'PYMODULE'),
+  ('ftplib', 'C:\\Program Files\\Python313\\Lib\\ftplib.py', 'PYMODULE'),
   ('getopt', 'C:\\Program Files\\Python313\\Lib\\getopt.py', 'PYMODULE'),
+  ('getpass', 'C:\\Program Files\\Python313\\Lib\\getpass.py', 'PYMODULE'),
   ('gettext', 'C:\\Program Files\\Python313\\Lib\\gettext.py', 'PYMODULE'),
   ('glob', 'C:\\Program Files\\Python313\\Lib\\glob.py', 'PYMODULE'),
   ('gzip', 'C:\\Program Files\\Python313\\Lib\\gzip.py', 'PYMODULE'),
   ('hashlib', 'C:\\Program Files\\Python313\\Lib\\hashlib.py', 'PYMODULE'),
+  ('hmac', 'C:\\Program Files\\Python313\\Lib\\hmac.py', 'PYMODULE'),
+  ('http', 'C:\\Program Files\\Python313\\Lib\\http\\__init__.py', 'PYMODULE'),
+  ('http.client',
+   'C:\\Program Files\\Python313\\Lib\\http\\client.py',
+   'PYMODULE'),
+  ('http.cookiejar',
+   'C:\\Program Files\\Python313\\Lib\\http\\cookiejar.py',
+   'PYMODULE'),
+  ('http.cookies',
+   'C:\\Program Files\\Python313\\Lib\\http\\cookies.py',
+   'PYMODULE'),
+  ('idna',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\idna\\__init__.py',
+   'PYMODULE'),
+  ('idna.core',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\idna\\core.py',
+   'PYMODULE'),
+  ('idna.idnadata',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\idna\\idnadata.py',
+   'PYMODULE'),
+  ('idna.intranges',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\idna\\intranges.py',
+   'PYMODULE'),
+  ('idna.package_data',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\idna\\package_data.py',
+   'PYMODULE'),
+  ('idna.uts46data',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\idna\\uts46data.py',
+   'PYMODULE'),
   ('importlib',
    'C:\\Program Files\\Python313\\Lib\\importlib\\__init__.py',
    'PYMODULE'),
@@ -193,6 +270,11 @@
    'C:\\Program Files\\Python313\\Lib\\logging\\__init__.py',
    'PYMODULE'),
   ('lzma', 'C:\\Program Files\\Python313\\Lib\\lzma.py', 'PYMODULE'),
+  ('mimetypes', 'C:\\Program Files\\Python313\\Lib\\mimetypes.py', 'PYMODULE'),
+  ('netrc', 'C:\\Program Files\\Python313\\Lib\\netrc.py', 'PYMODULE'),
+  ('nturl2path',
+   'C:\\Program Files\\Python313\\Lib\\nturl2path.py',
+   'PYMODULE'),
   ('numbers', 'C:\\Program Files\\Python313\\Lib\\numbers.py', 'PYMODULE'),
   ('opcode', 'C:\\Program Files\\Python313\\Lib\\opcode.py', 'PYMODULE'),
   ('pathlib',
@@ -209,12 +291,82 @@
   ('py_compile',
    'C:\\Program Files\\Python313\\Lib\\py_compile.py',
    'PYMODULE'),
+  ('queue', 'C:\\Program Files\\Python313\\Lib\\queue.py', 'PYMODULE'),
   ('quopri', 'C:\\Program Files\\Python313\\Lib\\quopri.py', 'PYMODULE'),
   ('random', 'C:\\Program Files\\Python313\\Lib\\random.py', 'PYMODULE'),
+  ('requests',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\requests\\__init__.py',
+   'PYMODULE'),
+  ('requests.__version__',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\requests\\__version__.py',
+   'PYMODULE'),
+  ('requests._internal_utils',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\requests\\_internal_utils.py',
+   'PYMODULE'),
+  ('requests.adapters',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\requests\\adapters.py',
+   'PYMODULE'),
+  ('requests.api',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\requests\\api.py',
+   'PYMODULE'),
+  ('requests.auth',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\requests\\auth.py',
+   'PYMODULE'),
+  ('requests.certs',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\requests\\certs.py',
+   'PYMODULE'),
+  ('requests.compat',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\requests\\compat.py',
+   'PYMODULE'),
+  ('requests.cookies',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\requests\\cookies.py',
+   'PYMODULE'),
+  ('requests.exceptions',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\requests\\exceptions.py',
+   'PYMODULE'),
+  ('requests.hooks',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\requests\\hooks.py',
+   'PYMODULE'),
+  ('requests.models',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\requests\\models.py',
+   'PYMODULE'),
+  ('requests.packages',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\requests\\packages.py',
+   'PYMODULE'),
+  ('requests.sessions',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\requests\\sessions.py',
+   'PYMODULE'),
+  ('requests.status_codes',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\requests\\status_codes.py',
+   'PYMODULE'),
+  ('requests.structures',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\requests\\structures.py',
+   'PYMODULE'),
+  ('requests.utils',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\requests\\utils.py',
+   'PYMODULE'),
   ('selectors', 'C:\\Program Files\\Python313\\Lib\\selectors.py', 'PYMODULE'),
   ('shutil', 'C:\\Program Files\\Python313\\Lib\\shutil.py', 'PYMODULE'),
   ('signal', 'C:\\Program Files\\Python313\\Lib\\signal.py', 'PYMODULE'),
   ('socket', 'C:\\Program Files\\Python313\\Lib\\socket.py', 'PYMODULE'),
+  ('ssl', 'C:\\Program Files\\Python313\\Lib\\ssl.py', 'PYMODULE'),
   ('statistics',
    'C:\\Program Files\\Python313\\Lib\\statistics.py',
    'PYMODULE'),
@@ -247,11 +399,168 @@
    'C:\\Program Files\\Python313\\Lib\\tracemalloc.py',
    'PYMODULE'),
   ('typing', 'C:\\Program Files\\Python313\\Lib\\typing.py', 'PYMODULE'),
+  ('typing_extensions',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\typing_extensions.py',
+   'PYMODULE'),
   ('urllib',
    'C:\\Program Files\\Python313\\Lib\\urllib\\__init__.py',
    'PYMODULE'),
+  ('urllib.error',
+   'C:\\Program Files\\Python313\\Lib\\urllib\\error.py',
+   'PYMODULE'),
   ('urllib.parse',
    'C:\\Program Files\\Python313\\Lib\\urllib\\parse.py',
+   'PYMODULE'),
+  ('urllib.request',
+   'C:\\Program Files\\Python313\\Lib\\urllib\\request.py',
+   'PYMODULE'),
+  ('urllib.response',
+   'C:\\Program Files\\Python313\\Lib\\urllib\\response.py',
+   'PYMODULE'),
+  ('urllib3',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\urllib3\\__init__.py',
+   'PYMODULE'),
+  ('urllib3._base_connection',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\urllib3\\_base_connection.py',
+   'PYMODULE'),
+  ('urllib3._collections',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\urllib3\\_collections.py',
+   'PYMODULE'),
+  ('urllib3._request_methods',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\urllib3\\_request_methods.py',
+   'PYMODULE'),
+  ('urllib3._version',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\urllib3\\_version.py',
+   'PYMODULE'),
+  ('urllib3.connection',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\urllib3\\connection.py',
+   'PYMODULE'),
+  ('urllib3.connectionpool',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\urllib3\\connectionpool.py',
+   'PYMODULE'),
+  ('urllib3.contrib',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\urllib3\\contrib\\__init__.py',
+   'PYMODULE'),
+  ('urllib3.contrib.emscripten',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\urllib3\\contrib\\emscripten\\__init__.py',
+   'PYMODULE'),
+  ('urllib3.contrib.emscripten.connection',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\urllib3\\contrib\\emscripten\\connection.py',
+   'PYMODULE'),
+  ('urllib3.contrib.emscripten.fetch',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\urllib3\\contrib\\emscripten\\fetch.py',
+   'PYMODULE'),
+  ('urllib3.contrib.emscripten.request',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\urllib3\\contrib\\emscripten\\request.py',
+   'PYMODULE'),
+  ('urllib3.contrib.emscripten.response',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\urllib3\\contrib\\emscripten\\response.py',
+   'PYMODULE'),
+  ('urllib3.contrib.pyopenssl',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\urllib3\\contrib\\pyopenssl.py',
+   'PYMODULE'),
+  ('urllib3.contrib.socks',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\urllib3\\contrib\\socks.py',
+   'PYMODULE'),
+  ('urllib3.exceptions',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\urllib3\\exceptions.py',
+   'PYMODULE'),
+  ('urllib3.fields',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\urllib3\\fields.py',
+   'PYMODULE'),
+  ('urllib3.filepost',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\urllib3\\filepost.py',
+   'PYMODULE'),
+  ('urllib3.http2',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\urllib3\\http2\\__init__.py',
+   'PYMODULE'),
+  ('urllib3.http2.connection',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\urllib3\\http2\\connection.py',
+   'PYMODULE'),
+  ('urllib3.http2.probe',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\urllib3\\http2\\probe.py',
+   'PYMODULE'),
+  ('urllib3.poolmanager',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\urllib3\\poolmanager.py',
+   'PYMODULE'),
+  ('urllib3.response',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\urllib3\\response.py',
+   'PYMODULE'),
+  ('urllib3.util',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\urllib3\\util\\__init__.py',
+   'PYMODULE'),
+  ('urllib3.util.connection',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\urllib3\\util\\connection.py',
+   'PYMODULE'),
+  ('urllib3.util.proxy',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\urllib3\\util\\proxy.py',
+   'PYMODULE'),
+  ('urllib3.util.request',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\urllib3\\util\\request.py',
+   'PYMODULE'),
+  ('urllib3.util.response',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\urllib3\\util\\response.py',
+   'PYMODULE'),
+  ('urllib3.util.retry',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\urllib3\\util\\retry.py',
+   'PYMODULE'),
+  ('urllib3.util.ssl_',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\urllib3\\util\\ssl_.py',
+   'PYMODULE'),
+  ('urllib3.util.ssl_match_hostname',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\urllib3\\util\\ssl_match_hostname.py',
+   'PYMODULE'),
+  ('urllib3.util.ssltransport',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\urllib3\\util\\ssltransport.py',
+   'PYMODULE'),
+  ('urllib3.util.timeout',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\urllib3\\util\\timeout.py',
+   'PYMODULE'),
+  ('urllib3.util.url',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\urllib3\\util\\url.py',
+   'PYMODULE'),
+  ('urllib3.util.util',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\urllib3\\util\\util.py',
+   'PYMODULE'),
+  ('urllib3.util.wait',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\urllib3\\util\\wait.py',
    'PYMODULE'),
   ('zipfile',
    'C:\\Program Files\\Python313\\Lib\\zipfile\\__init__.py',

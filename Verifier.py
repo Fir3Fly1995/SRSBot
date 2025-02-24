@@ -18,7 +18,8 @@ verification_codes = {}
 verification_messages = {}
 
 # Configure logging
-logging.basicConfig(level=logging.INFO)
+log_file = 'Z:\\Testing Logs\\Verifier_Logs.log'
+logging.basicConfig(filename=log_file, level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 @bot.event
 async def on_ready():
@@ -80,8 +81,10 @@ async def verify_command(interaction: discord.Interaction, rsi_username: str = N
                         del verification_codes[user_id]  # Remove the code after successful verification
                     else:
                         await interaction.followup.send("Code not found in your RSI bio. Please double-check.", ephemeral=True)  # Ephemeral for errors too
+                        logging.warning(f"Code not found in RSI bio for user: {interaction.user}")
                 else:
                     await interaction.followup.send("Could not find the bio section on your RSI profile. Please make sure your profile is public.", ephemeral=True)  # More informative message
+                    logging.warning(f"Bio section not found on RSI profile for user: {interaction.user}")
 
             except requests.exceptions.RequestException as e:
                 logging.error(f'Error checking RSI profile: {e}')
@@ -91,5 +94,6 @@ async def verify_command(interaction: discord.Interaction, rsi_username: str = N
                 await interaction.followup.send(f"An unexpected error occurred: {e}", ephemeral=True)
         else:
             await interaction.followup.send("Please initiate the verification process by typing `/verify` first.", ephemeral=True)
+            logging.warning(f"Verification process not initiated for user: {interaction.user}")
 
 bot.run(BOT_TOKEN)
