@@ -14,7 +14,7 @@ import ssl
 import aiohttp
 
 # Configure logging
-log_file = os.path.join(os.getenv('LOCALAPPDATA'), 'SRSBot', 'bot_files', 'Verifier.log')
+log_file = 'Z:\\Testing Logs\\bot_log.log'
 logging.basicConfig(filename=log_file, level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Define the paths to the variable files
