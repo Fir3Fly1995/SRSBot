@@ -7,7 +7,6 @@ import pyperclip  # Import pyperclip to copy text to clipboard
 import requests
 import time
 import threading
-import winreg  # Import winreg to manage registry entries
 
 # Define the directory to store the text files
 bot_items_dir = os.path.join(os.getenv('LOCALAPPDATA'), 'SRSBot', 'Bot_Items')
@@ -81,18 +80,9 @@ def start_bot():
         # Log the command for debugging purposes
         logging.debug(f"Command to start bot: {verifier_exe}")
 
-        # Copy the command to the clipboard
-        pyperclip.copy(verifier_exe)
-        logging.debug("Command copied to clipboard")
-
-        # Show a message box with instructions
-        messagebox.showinfo("Info", "The bot has been started. The command to start the bot itself is copied to your clipboard.\n\n1. Click on the Command Prompt (black space in the opened window)\n2. Press Ctrl + V\n3. Hit the enter key\n\nThank you!")
-        update_ticker("Starting Bot...")
-
-        # Start the executable in an elevated cmd.exe
-        logging.debug(f"Running cmd.exe to start executable: {verifier_exe}")
-        subprocess.run(['powershell', '-Command', f'Start-Process cmd.exe -ArgumentList "/c {verifier_exe}" -Verb RunAs'])
-        logging.debug("cmd.exe command executed")
+        # Start the executable directly
+        subprocess.Popen(verifier_exe, shell=True)
+        logging.debug("Verifier.exe started")
     except Exception as e:
         messagebox.showerror("Error", f"Failed to start the bot: {e}")
         update_ticker(f"Failed to start the bot: {e}")
@@ -127,34 +117,6 @@ def package_manager():
         messagebox.showerror("Error", f"Failed to update and open the package manager: {e}")
         update_ticker(f"Failed to update and open the package manager: {e}")
         logging.error(f"Failed to update and open the package manager: {e}")
-
-def add_python_to_path():
-    logging.debug("Adding Python to PATH")
-    try:
-        python_path = 'C:\\Program Files\\Python313'
-        with winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, r'SYSTEM\CurrentControlSet\Control\Session Manager\Environment', 0, winreg.KEY_READ | winreg.KEY_WRITE) as key:
-            path, _ = winreg.QueryValueEx(key, 'Path')
-            if python_path not in path:
-                new_path = path + ';' + python_path
-                winreg.SetValueEx(key, 'Path', 0, winreg.REG_EXPAND_SZ, new_path)
-                logging.info("Python path added to system PATH")
-                messagebox.showinfo("Info", "Python path added to system PATH. Please restart your computer for the changes to take effect.")
-            else:
-                logging.info("Python path already in system PATH")
-                messagebox.showinfo("Info", "Python path is already in the system PATH.")
-    except Exception as e:
-        messagebox.showerror("Error", f"Failed to add Python to PATH: {e}")
-        logging.error(f"Failed to add Python to PATH: {e}")
-
-def check_python_in_path():
-    python_path = 'C:\\Program Files\\Python313'
-    try:
-        with winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, r'SYSTEM\CurrentControlSet\Control\Session Manager\Environment', 0, winreg.KEY_READ) as key:
-            path, _ = winreg.QueryValueEx(key, 'Path')
-            return python_path in path
-    except Exception as e:
-        logging.error(f"Failed to check Python in PATH: {e}")
-        return False
 
 def quit_app():
     update_ticker("Terminating Launcher. Thank you for using the SRS Bot.")
@@ -200,14 +162,6 @@ tk.Button(root, text="Quit", command=quit_app).grid(row=5, column=1, padx=10, pa
 # Create and place the ticker label
 ticker_label = tk.Label(root, text="Standing by...", font=("Helvetica", 10))
 ticker_label.grid(row=6, column=0, columnspan=2, padx=10, pady=10)
-
-# Create and place the button to add Python to PATH
-add_path_button = tk.Button(root, text="Add Python to PATH", command=lambda: run_in_thread(add_python_to_path))
-add_path_button.grid(row=7, column=0, columnspan=2, padx=10, pady=10)
-
-# Disable the button if Python is already in PATH
-if check_python_in_path():
-    add_path_button.config(state=tk.DISABLED)
 
 # Read the data from files and populate the entry fields
 read_data()

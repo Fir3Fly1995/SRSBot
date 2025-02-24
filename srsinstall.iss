@@ -32,26 +32,10 @@ const
   SMTO_ABORTIFHUNG = 2;
   WM_SETTINGCHANGE = $1A;
 
-procedure AddPythonToPath;
-var
-  Path: string;
-  PythonPath: string;
-begin
-  PythonPath := 'C:\Program Files\Python313';
-  if RegQueryStringValue(HKEY_LOCAL_MACHINE, 'SYSTEM\CurrentControlSet\Control\Session Manager\Environment', 'Path', Path) then
-  begin
-    if Pos(PythonPath, Path) = 0 then
-    begin
-      Path := Path + ';' + PythonPath;
-      RegWriteStringValue(HKEY_LOCAL_MACHINE, 'SYSTEM\CurrentControlSet\Control\Session Manager\Environment', 'Path', Path);
-    end;
-  end;
-end;
-
 procedure CurStepChanged(CurStep: TSetupStep);
 begin
   if CurStep = ssPostInstall then
   begin
-    AddPythonToPath;
+    // Any post-installation steps can be added here if needed
   end;
 end;
