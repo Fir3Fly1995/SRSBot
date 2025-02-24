@@ -8,6 +8,10 @@ import os
 import logging
 import tkinter as tk
 from tkinter.scrolledtext import ScrolledText
+import threading
+import certifi
+import ssl
+import aiohttp
 
 # Configure logging
 log_file = os.path.join(os.getenv('LOCALAPPDATA'), 'SRSBot', 'bot_files', 'Verifier.log')
@@ -59,7 +63,12 @@ if not isinstance(BOT_TOKEN, str):
 
 intents = discord.Intents.default()
 intents.message_content = True  # Enable reading message content
-bot = commands.Bot(command_prefix="!", intents=intents)  # Keep prefix for other commands if needed
+
+# Create a custom aiohttp connector using certifi
+connector = aiohttp.TCPConnector(ssl=ssl.create_default_context(cafile=certifi.where()))
+
+# Create the bot with the custom connector
+bot = commands.Bot(command_prefix="!", intents=intents, connector=connector)
 
 verification_codes = {}
 
@@ -97,7 +106,8 @@ async def verify_command(interaction: discord.Interaction, rsi_username: str = N
             try:
                 url = f"https://robertsspaceindustries.com/en/citizens/{rsi_username}"
                 logging.debug(f"Fetching RSI profile from URL: {url}")
-                response = requests.get(url, verify=False)  # Disable SSL verification
+                ssl_context = ssl.create_default_context(cafile=certifi.where())
+                response = requests.get(url, verify=ssl_context)  # Use the ssl_context in your requests
                 response.raise_for_status()  # Raise an exception for bad status codes (4xx or 5xx)
                 logging.debug(f"RSI profile fetched successfully for user: {interaction.user}")
 
@@ -157,6 +167,7 @@ example_function()
 # Run the bot
 def run_bot():
     if BOT_TOKEN:
+        logging.info("Starting the bot")
         bot.run(BOT_TOKEN)
     else:
         logging.error("Bot token is None. Cannot start the bot.")

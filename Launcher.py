@@ -76,22 +76,22 @@ def start_bot():
     logging.debug("Starting bot")
     try:
         srsbot_dir = os.path.join(os.getenv('LOCALAPPDATA'), 'SRSBot', 'bot_files')
-        startbot_script = os.path.join(srsbot_dir, 'Start_bot.bat')
+        verifier_exe = os.path.join(srsbot_dir, 'Verifier.exe')
 
         # Log the command for debugging purposes
-        logging.debug(f"Command to start bot: {startbot_script}")
+        logging.debug(f"Command to start bot: {verifier_exe}")
 
         # Copy the command to the clipboard
-        pyperclip.copy(startbot_script)
+        pyperclip.copy(verifier_exe)
         logging.debug("Command copied to clipboard")
 
         # Show a message box with instructions
         messagebox.showinfo("Info", "The bot has been started. The command to start the bot itself is copied to your clipboard.\n\n1. Click on the Command Prompt (black space in the opened window)\n2. Press Ctrl + V\n3. Hit the enter key\n\nThank you!")
         update_ticker("Starting Bot...")
 
-        # Start the batch file in an elevated cmd.exe
-        logging.debug(f"Running cmd.exe to start batch file: {startbot_script}")
-        subprocess.run(['powershell', '-Command', f'Start-Process cmd.exe -ArgumentList "/c {startbot_script}" -Verb RunAs'])
+        # Start the executable in an elevated cmd.exe
+        logging.debug(f"Running cmd.exe to start executable: {verifier_exe}")
+        subprocess.run(['powershell', '-Command', f'Start-Process cmd.exe -ArgumentList "/c {verifier_exe}" -Verb RunAs'])
         logging.debug("cmd.exe command executed")
     except Exception as e:
         messagebox.showerror("Error", f"Failed to start the bot: {e}")

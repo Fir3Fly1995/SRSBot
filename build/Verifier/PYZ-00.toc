@@ -1,5 +1,5 @@
 ('C:\\Users\\Alex '
- 'Edwards\\Documents\\GitHub\\SRSBot\\build\\Verifier\\PYZ-00.pyz',
+ 'Edwards\\Documents\\GitHub\\SRSBot\\build\\verifier\\PYZ-00.pyz',
  [('__future__',
    'C:\\Program Files\\Python313\\Lib\\__future__.py',
    'PYMODULE'),
