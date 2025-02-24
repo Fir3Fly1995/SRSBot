@@ -71,11 +71,9 @@ def start_bot():
     try:
         srsbot_dir = os.path.join(os.getenv('LOCALAPPDATA'), 'SRSBot', 'bot_files')
         activate_script = os.path.join(srsbot_dir, 'srsenv', 'Scripts', 'Activate.ps1')
-        python_executable = os.path.join(srsbot_dir, 'srsenv', 'Scripts', 'python.exe')
-        verifier_script = os.path.join(srsbot_dir, 'Verifier.py')
 
         # Command to start the bot
-        command = f'{python_executable} {verifier_script}'
+        command = 'python Verifier.py'
 
         # Log the command for debugging purposes
         logging.debug(f"Command to start bot: {command}")
