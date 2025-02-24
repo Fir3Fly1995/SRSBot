@@ -3,7 +3,7 @@
  False,
  False,
  False,
- ['C:\\Users\\Alex Edwards\\Documents\\GitHub\\SRSBot\\imagery\\boticon.ico'],
+ ['C:\\Users\\Alex Edwards\\Documents\\GitHub\\SRSBot\\imagery\\BotIcon.ico'],
  None,
  False,
  False,
@@ -3060,7 +3060,7 @@
  [],
  False,
  False,
- 1740416029,
+ 1740421058,
  [('runw.exe',
    'C:\\Users\\Alex '
    'Edwards\\Documents\\GitHub\\SRSBot\\srsenv\\Lib\\site-packages\\PyInstaller\\bootloader\\Windows-64bit-intel\\runw.exe',

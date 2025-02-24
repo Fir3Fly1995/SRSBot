@@ -111,8 +111,6 @@ def package_manager():
         update_ticker("Downloading Package Manager Updates")
         # Fetch and update package manager files from GitHub
         fetch_file('https://github.com/Fir3Fly1995/SRSBot/raw/main/dist/package_manager.exe', os.path.join(updater_dir, 'package_manager.exe'))
-        fetch_file('https://github.com/Fir3Fly1995/SRSBot/raw/main/package_manager.spec', os.path.join(updater_dir, 'package_manager.spec'))
-        fetch_file('https://github.com/Fir3Fly1995/SRSBot/raw/main/package_manager.py', os.path.join(updater_dir, 'package_manager.py'))
 
         logging.info("Package manager files fetched and updated successfully.")
 

@@ -35,5 +35,5 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon=['C:\\Users\\Alex Edwards\\Documents\\GitHub\\SRSBot\\imagery\\boticon.ico'],
+    icon=['imagery\\BotIcon.ico'],
 )
