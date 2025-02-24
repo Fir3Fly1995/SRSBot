@@ -30,6 +30,10 @@ Name: "{commondesktop}\SRSBot Launcher"; Filename: "{localappdata}\SRSBot\bot_fi
 Filename: "{localappdata}\SRSBot\bot_files\Launcher.exe"; Description: "Launch SRSBot"; Flags: nowait postinstall skipifsilent
 
 [Code]
+const
+  SMTO_ABORTIFHUNG = 2;
+  WM_SETTINGCHANGE = $1A;
+
 procedure AddPythonToPath;
 var
   Path: string;
@@ -42,7 +46,6 @@ begin
     begin
       Path := Path + ';' + PythonPath;
       RegWriteStringValue(HKEY_LOCAL_MACHINE, 'SYSTEM\CurrentControlSet\Control\Session Manager\Environment', 'Path', Path);
-      SendMessageTimeout(HWND_BROADCAST, WM_SETTINGCHANGE, 0, LPARAM(PChar('Environment')), SMTO_ABORTIFHUNG, 5000, PDWORD(nil)^);
     end;
   end;
 end;
