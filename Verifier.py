@@ -8,7 +8,7 @@ import os
 import logging
 
 # Set the bot token programmatically
-BOT_TOKEN = "MTMzNzU4NjcwNDI3MzYzNzQwNg.GE4nud.Rg03HYBTNs1FfynMn9cc31TK-To2UO6_xIjAQ8"  # Replace with your actual bot token
+BOT_TOKEN = "TOKEN_HERE"  # Replace with your actual bot token
 
 intents = discord.Intents.default()
 intents.message_content = True  # Enable reading message content
