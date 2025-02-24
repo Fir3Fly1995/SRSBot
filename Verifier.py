@@ -6,6 +6,8 @@ from bs4 import BeautifulSoup
 import asyncio
 import os
 import logging
+import tkinter as tk
+from tkinter.scrolledtext import ScrolledText
 
 # Configure logging
 log_file = os.path.join(os.getenv('LOCALAPPDATA'), 'SRSBot', 'bot_files', 'Verifier.log')
@@ -153,7 +155,44 @@ def example_function():
 example_function()
 
 # Run the bot
-if BOT_TOKEN:
-    bot.run(BOT_TOKEN)
-else:
-    logging.error("Bot token is None. Cannot start the bot.")
+def run_bot():
+    if BOT_TOKEN:
+        bot.run(BOT_TOKEN)
+    else:
+        logging.error("Bot token is None. Cannot start the bot.")
+
+# Create the main window
+root = tk.Tk()
+root.title("SRSBot Verifier")
+
+# Create a console output window
+console_output = ScrolledText(root, wrap=tk.WORD, width=100, height=20, font=("Helvetica", 10))
+console_output.grid(row=0, column=0, padx=10, pady=10, columnspan=2)
+
+# Redirect logging to the console output window
+class TextHandler(logging.Handler):
+    def __init__(self, widget):
+        logging.Handler.__init__(self)
+        self.widget = widget
+
+    def emit(self, record):
+        msg = self.format(record)
+        def append():
+            self.widget.configure(state='normal')
+            self.widget.insert(tk.END, msg + '\n')
+            self.widget.configure(state='disabled')
+            self.widget.yview(tk.END)
+        self.widget.after(0, append)
+
+text_handler = TextHandler(console_output)
+logging.getLogger().addHandler(text_handler)
+
+# Create a quit button
+quit_button = tk.Button(root, text="Quit", command=root.quit)
+quit_button.grid(row=1, column=1, padx=10, pady=10, sticky='e')
+
+# Run the bot in a separate thread
+threading.Thread(target=run_bot).start()
+
+# Run the main loop
+root.mainloop()
