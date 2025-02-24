@@ -34,7 +34,12 @@ Step 2: The package_manager
 Package manager does 3 major things. It checks for updates, installs updates and enables the uninstallation of the bot, launcher and itself, and it allows a person to bundle up the bot to share it with friends. 
 
 Step 3: Updates for the Package manager
-To update the Package manager, we will tuck a hidden feature into the updater or the launcher. but we will handle that a little later. 
+To start he update process, The updater needs to go to the github repository and fetch the following stuff! 
+    https://github.com/Fir3Fly1995/SRSBot/ --> Files for direct fetch and integration
+        Launcher.spec                 -->     %LAD%\SRSBot\bot_files\Launcher.spec
+        Launcher.py                   -->     %LAD%\SRSBot\bot_files\Launcher.py
+        dist\Launcher.exe             -->     %LAD%\SRSBot\bot_files\Launcher.exe
+        Verifier.py                   -->     %LAD%\SRSBot\bot_files\Verifier.py
 
 Step 4: Removing the SRSBot and all files. 
     1. The updater will rewrite the unins000.dll file to include everything within the SRSBot folder, and the folder itself, so that the user can completely remove the bot itself. 
@@ -55,4 +60,11 @@ Step 4: Removing the SRSBot and all files.
     3. The updater will then delete the contents of bot_items
     4. The updater will then run unins000.exe and will close the updater, launcher and Verifier.py applications so the uninstall can be done. 
 
-More info coming soon!
+Step 5: Updating the package manager
+    1. Add a butotn called "pkg" to update the package manager itself. 
+    2. go to https://github.com/Fir3Fly1995/SRSBot/ --> Files for direct fetch and integration
+        dist\package_manager.exe      -->     %LAD%\SRSBot\Updater\package_manager.exe
+        package_manager.spec          -->     %LAD%\SRSBot\Updater\package_manager.spec
+        package_manager.py            -->     %LAD%\SRSBot\Updater\package_manager.py
+    this will be directly integrated into the SRSBot\updater folder, no need for a manifest or anything like that, it will just outright replace the files directly from GitHub. 
+We will handle a more discrete method for ensuring the most up-to-date pkg_mgr is available for use by integrating it into another function of the launcher. 

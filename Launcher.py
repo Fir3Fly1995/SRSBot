@@ -37,7 +37,7 @@ def start_bot():
         verifier_script = os.path.join(srsbot_dir, 'Verifier.py')
 
         # Command to run in the command prompt
-        command = f'cmd /k "cd /d {srsbot_dir} && {activate_script} && python {verifier_script}"'
+        command = f'cmd /k "cd /d {srsbot_dir} && call {activate_script} && python {verifier_script}"'
 
         # Run the command with administrative privileges
         subprocess.run(['powershell', '-Command', f'Start-Process cmd -ArgumentList \'/k {command}\' -Verb RunAs'])
