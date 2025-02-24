@@ -231,5 +231,5 @@ threading.Thread(target=run_bot).start()
 
 # Run the main loop
 logging.debug("Starting main loop")
-root.mainloop()
 logging.debug("Main loop ended")
+root.mainloop()
