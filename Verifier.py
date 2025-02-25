@@ -170,14 +170,14 @@ example_function()
 log_queue = queue.Queue()
 
 # Run the bot
-def run_bot():
+async def run_bot():
     log_queue.put("run_bot function called")
     if BOT_TOKEN:
         log_queue.put("Starting the bot")
         # Create the aiohttp connector within the asynchronous context
         connector = aiohttp.TCPConnector(ssl=ssl.create_default_context(cafile=certifi.where()))
         bot.connector = connector
-        bot.run(BOT_TOKEN)
+        await bot.start(BOT_TOKEN)
     else:
         log_queue.put("Bot token is None. Cannot start the bot.")
 
@@ -227,7 +227,7 @@ root.after(100, process_log_queue)
 
 # Run the bot in a separate thread
 logging.debug("Starting bot thread")
-threading.Thread(target=run_bot).start()
+threading.Thread(target=lambda: asyncio.run(run_bot())).start()
 
 # Run the main loop
 logging.debug("Starting main loop")
