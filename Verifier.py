@@ -16,10 +16,6 @@ import ssl
 import httpx as aiohttp
 import queue
 
-# Configure logging
-log_file = 'Z:\\Testing Logs\\bot_log.log'
-logging.basicConfig(filename=log_file, level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
-
 # Define the paths to the variable files
 bot_items_dir = os.path.join(os.getenv('LOCALAPPDATA'), 'SRSBot', 'Bot_Items')
 token_file_path = os.path.join(bot_items_dir, 'token.txt')
