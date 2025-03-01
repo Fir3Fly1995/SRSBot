@@ -1,4 +1,4 @@
-# Nr. 30 is the las known good checkpoint
+# Nr. 30 is the last known good checkpoint
 import discord
 from discord.ext import commands
 import random
