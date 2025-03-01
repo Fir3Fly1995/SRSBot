@@ -250,6 +250,138 @@
    'C:\\Users\\Alex '
    'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\aiosignal\\__init__.py',
    'PYMODULE'),
+  ('anyio',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\anyio\\__init__.py',
+   'PYMODULE'),
+  ('anyio._backends',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\anyio\\_backends\\__init__.py',
+   'PYMODULE'),
+  ('anyio._backends._asyncio',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\anyio\\_backends\\_asyncio.py',
+   'PYMODULE'),
+  ('anyio._backends._trio',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\anyio\\_backends\\_trio.py',
+   'PYMODULE'),
+  ('anyio._core',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\anyio\\_core\\__init__.py',
+   'PYMODULE'),
+  ('anyio._core._asyncio_selector_thread',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\anyio\\_core\\_asyncio_selector_thread.py',
+   'PYMODULE'),
+  ('anyio._core._eventloop',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\anyio\\_core\\_eventloop.py',
+   'PYMODULE'),
+  ('anyio._core._exceptions',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\anyio\\_core\\_exceptions.py',
+   'PYMODULE'),
+  ('anyio._core._fileio',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\anyio\\_core\\_fileio.py',
+   'PYMODULE'),
+  ('anyio._core._resources',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\anyio\\_core\\_resources.py',
+   'PYMODULE'),
+  ('anyio._core._signals',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\anyio\\_core\\_signals.py',
+   'PYMODULE'),
+  ('anyio._core._sockets',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\anyio\\_core\\_sockets.py',
+   'PYMODULE'),
+  ('anyio._core._streams',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\anyio\\_core\\_streams.py',
+   'PYMODULE'),
+  ('anyio._core._subprocesses',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\anyio\\_core\\_subprocesses.py',
+   'PYMODULE'),
+  ('anyio._core._synchronization',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\anyio\\_core\\_synchronization.py',
+   'PYMODULE'),
+  ('anyio._core._tasks',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\anyio\\_core\\_tasks.py',
+   'PYMODULE'),
+  ('anyio._core._testing',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\anyio\\_core\\_testing.py',
+   'PYMODULE'),
+  ('anyio._core._typedattr',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\anyio\\_core\\_typedattr.py',
+   'PYMODULE'),
+  ('anyio.abc',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\anyio\\abc\\__init__.py',
+   'PYMODULE'),
+  ('anyio.abc._eventloop',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\anyio\\abc\\_eventloop.py',
+   'PYMODULE'),
+  ('anyio.abc._resources',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\anyio\\abc\\_resources.py',
+   'PYMODULE'),
+  ('anyio.abc._sockets',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\anyio\\abc\\_sockets.py',
+   'PYMODULE'),
+  ('anyio.abc._streams',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\anyio\\abc\\_streams.py',
+   'PYMODULE'),
+  ('anyio.abc._subprocesses',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\anyio\\abc\\_subprocesses.py',
+   'PYMODULE'),
+  ('anyio.abc._tasks',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\anyio\\abc\\_tasks.py',
+   'PYMODULE'),
+  ('anyio.abc._testing',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\anyio\\abc\\_testing.py',
+   'PYMODULE'),
+  ('anyio.from_thread',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\anyio\\from_thread.py',
+   'PYMODULE'),
+  ('anyio.lowlevel',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\anyio\\lowlevel.py',
+   'PYMODULE'),
+  ('anyio.streams',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\anyio\\streams\\__init__.py',
+   'PYMODULE'),
+  ('anyio.streams.memory',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\anyio\\streams\\memory.py',
+   'PYMODULE'),
+  ('anyio.streams.stapled',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\anyio\\streams\\stapled.py',
+   'PYMODULE'),
+  ('anyio.streams.tls',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\anyio\\streams\\tls.py',
+   'PYMODULE'),
+  ('anyio.to_thread',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\anyio\\to_thread.py',
+   'PYMODULE'),
   ('argparse', 'C:\\Program Files\\Python313\\Lib\\argparse.py', 'PYMODULE'),
   ('ast', 'C:\\Program Files\\Python313\\Lib\\ast.py', 'PYMODULE'),
   ('asyncio',
@@ -1135,6 +1267,50 @@
   ('gettext', 'C:\\Program Files\\Python313\\Lib\\gettext.py', 'PYMODULE'),
   ('glob', 'C:\\Program Files\\Python313\\Lib\\glob.py', 'PYMODULE'),
   ('gzip', 'C:\\Program Files\\Python313\\Lib\\gzip.py', 'PYMODULE'),
+  ('h11',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\h11\\__init__.py',
+   'PYMODULE'),
+  ('h11._abnf',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\h11\\_abnf.py',
+   'PYMODULE'),
+  ('h11._connection',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\h11\\_connection.py',
+   'PYMODULE'),
+  ('h11._events',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\h11\\_events.py',
+   'PYMODULE'),
+  ('h11._headers',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\h11\\_headers.py',
+   'PYMODULE'),
+  ('h11._readers',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\h11\\_readers.py',
+   'PYMODULE'),
+  ('h11._receivebuffer',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\h11\\_receivebuffer.py',
+   'PYMODULE'),
+  ('h11._state',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\h11\\_state.py',
+   'PYMODULE'),
+  ('h11._util',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\h11\\_util.py',
+   'PYMODULE'),
+  ('h11._version',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\h11\\_version.py',
+   'PYMODULE'),
+  ('h11._writers',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\h11\\_writers.py',
+   'PYMODULE'),
   ('hashlib', 'C:\\Program Files\\Python313\\Lib\\hashlib.py', 'PYMODULE'),
   ('hmac', 'C:\\Program Files\\Python313\\Lib\\hmac.py', 'PYMODULE'),
   ('html', 'C:\\Program Files\\Python313\\Lib\\html\\__init__.py', 'PYMODULE'),
@@ -1153,6 +1329,222 @@
    'PYMODULE'),
   ('http.cookies',
    'C:\\Program Files\\Python313\\Lib\\http\\cookies.py',
+   'PYMODULE'),
+  ('httpcore',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpcore\\__init__.py',
+   'PYMODULE'),
+  ('httpcore._api',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpcore\\_api.py',
+   'PYMODULE'),
+  ('httpcore._async',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpcore\\_async\\__init__.py',
+   'PYMODULE'),
+  ('httpcore._async.connection',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpcore\\_async\\connection.py',
+   'PYMODULE'),
+  ('httpcore._async.connection_pool',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpcore\\_async\\connection_pool.py',
+   'PYMODULE'),
+  ('httpcore._async.http11',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpcore\\_async\\http11.py',
+   'PYMODULE'),
+  ('httpcore._async.http2',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpcore\\_async\\http2.py',
+   'PYMODULE'),
+  ('httpcore._async.http_proxy',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpcore\\_async\\http_proxy.py',
+   'PYMODULE'),
+  ('httpcore._async.interfaces',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpcore\\_async\\interfaces.py',
+   'PYMODULE'),
+  ('httpcore._async.socks_proxy',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpcore\\_async\\socks_proxy.py',
+   'PYMODULE'),
+  ('httpcore._backends',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpcore\\_backends\\__init__.py',
+   'PYMODULE'),
+  ('httpcore._backends.anyio',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpcore\\_backends\\anyio.py',
+   'PYMODULE'),
+  ('httpcore._backends.auto',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpcore\\_backends\\auto.py',
+   'PYMODULE'),
+  ('httpcore._backends.base',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpcore\\_backends\\base.py',
+   'PYMODULE'),
+  ('httpcore._backends.mock',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpcore\\_backends\\mock.py',
+   'PYMODULE'),
+  ('httpcore._backends.sync',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpcore\\_backends\\sync.py',
+   'PYMODULE'),
+  ('httpcore._backends.trio',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpcore\\_backends\\trio.py',
+   'PYMODULE'),
+  ('httpcore._exceptions',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpcore\\_exceptions.py',
+   'PYMODULE'),
+  ('httpcore._models',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpcore\\_models.py',
+   'PYMODULE'),
+  ('httpcore._ssl',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpcore\\_ssl.py',
+   'PYMODULE'),
+  ('httpcore._sync',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpcore\\_sync\\__init__.py',
+   'PYMODULE'),
+  ('httpcore._sync.connection',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpcore\\_sync\\connection.py',
+   'PYMODULE'),
+  ('httpcore._sync.connection_pool',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpcore\\_sync\\connection_pool.py',
+   'PYMODULE'),
+  ('httpcore._sync.http11',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpcore\\_sync\\http11.py',
+   'PYMODULE'),
+  ('httpcore._sync.http2',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpcore\\_sync\\http2.py',
+   'PYMODULE'),
+  ('httpcore._sync.http_proxy',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpcore\\_sync\\http_proxy.py',
+   'PYMODULE'),
+  ('httpcore._sync.interfaces',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpcore\\_sync\\interfaces.py',
+   'PYMODULE'),
+  ('httpcore._sync.socks_proxy',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpcore\\_sync\\socks_proxy.py',
+   'PYMODULE'),
+  ('httpcore._synchronization',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpcore\\_synchronization.py',
+   'PYMODULE'),
+  ('httpcore._trace',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpcore\\_trace.py',
+   'PYMODULE'),
+  ('httpcore._utils',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpcore\\_utils.py',
+   'PYMODULE'),
+  ('httpx',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpx\\__init__.py',
+   'PYMODULE'),
+  ('httpx.__version__',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpx\\__version__.py',
+   'PYMODULE'),
+  ('httpx._api',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpx\\_api.py',
+   'PYMODULE'),
+  ('httpx._auth',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpx\\_auth.py',
+   'PYMODULE'),
+  ('httpx._client',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpx\\_client.py',
+   'PYMODULE'),
+  ('httpx._config',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpx\\_config.py',
+   'PYMODULE'),
+  ('httpx._content',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpx\\_content.py',
+   'PYMODULE'),
+  ('httpx._decoders',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpx\\_decoders.py',
+   'PYMODULE'),
+  ('httpx._exceptions',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpx\\_exceptions.py',
+   'PYMODULE'),
+  ('httpx._main',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpx\\_main.py',
+   'PYMODULE'),
+  ('httpx._models',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpx\\_models.py',
+   'PYMODULE'),
+  ('httpx._multipart',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpx\\_multipart.py',
+   'PYMODULE'),
+  ('httpx._status_codes',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpx\\_status_codes.py',
+   'PYMODULE'),
+  ('httpx._transports',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpx\\_transports\\__init__.py',
+   'PYMODULE'),
+  ('httpx._transports.asgi',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpx\\_transports\\asgi.py',
+   'PYMODULE'),
+  ('httpx._transports.base',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpx\\_transports\\base.py',
+   'PYMODULE'),
+  ('httpx._transports.default',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpx\\_transports\\default.py',
+   'PYMODULE'),
+  ('httpx._transports.mock',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpx\\_transports\\mock.py',
+   'PYMODULE'),
+  ('httpx._transports.wsgi',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpx\\_transports\\wsgi.py',
+   'PYMODULE'),
+  ('httpx._types',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpx\\_types.py',
+   'PYMODULE'),
+  ('httpx._urlparse',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpx\\_urlparse.py',
+   'PYMODULE'),
+  ('httpx._urls',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpx\\_urls.py',
+   'PYMODULE'),
+  ('httpx._utils',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\httpx\\_utils.py',
    'PYMODULE'),
   ('idna',
    'C:\\Users\\Alex '
@@ -1461,6 +1853,18 @@
   ('shlex', 'C:\\Program Files\\Python313\\Lib\\shlex.py', 'PYMODULE'),
   ('shutil', 'C:\\Program Files\\Python313\\Lib\\shutil.py', 'PYMODULE'),
   ('signal', 'C:\\Program Files\\Python313\\Lib\\signal.py', 'PYMODULE'),
+  ('sniffio',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\sniffio\\__init__.py',
+   'PYMODULE'),
+  ('sniffio._impl',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\sniffio\\_impl.py',
+   'PYMODULE'),
+  ('sniffio._version',
+   'C:\\Users\\Alex '
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\sniffio\\_version.py',
+   'PYMODULE'),
   ('socket', 'C:\\Program Files\\Python313\\Lib\\socket.py', 'PYMODULE'),
   ('soupsieve',
    'C:\\Users\\Alex '

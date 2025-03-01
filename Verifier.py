@@ -12,7 +12,8 @@ from tkinter.scrolledtext import ScrolledText
 import threading
 import certifi
 import ssl
-import aiohttp
+import httpx as aiohttp
+from httpx import aiohttp
 import queue
 
 # Configure logging
