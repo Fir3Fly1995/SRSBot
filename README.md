@@ -59,4 +59,4 @@ Nr. 53 - Attempted to fix TCPConnector                              I couldnt, b
 Nr. 54 - Added a time checker!                                      Havent tested it (at the time of writing this, but of course, no idea of the time.. yet because theres no time checker!)
 Nr. 55 - Did an experimental rollback                               Rolling them balls for the bingo!
 Nr. 56 - Nuclear bombed the living fucking bejaysus out of everything and went to python 3.12 and we're converting the bot to C++
-                                                                    There is no space for the witty comment this time, sorry... 
+                                                                    It also broke due to SSL issues! 
