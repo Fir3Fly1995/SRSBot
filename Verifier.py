@@ -1,9 +1,7 @@
-# Nr. 30 is the last known good checkpoint
-# putting this because apparently GitHub isnt pushing the update!
 import discord
 from discord.ext import commands
 import random
-import requests
+import httpx as aiohttp
 from bs4 import BeautifulSoup
 import asyncio
 import os
@@ -13,7 +11,6 @@ from tkinter.scrolledtext import ScrolledText
 import threading
 import certifi
 import ssl
-import httpx as aiohttp
 import queue
 
 # Define the paths to the variable files
@@ -172,9 +169,6 @@ async def run_bot():
     log_queue.put("run_bot function called")
     if BOT_TOKEN:
         log_queue.put("Starting the bot")
-        # Create the aiohttp connector within the asynchronous context
-        connector = aiohttp.TCPConnector(ssl=ssl.create_default_context(cafile=certifi.where()))
-        bot.connector = connector
         await bot.start(BOT_TOKEN)
     else:
         log_queue.put("Bot token is None. Cannot start the bot.")
