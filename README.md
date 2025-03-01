@@ -2,7 +2,7 @@
  The official SRSBot GitHub Repo
  
 **notes**
-Nr. 1 -  Initial commit Nr. 1                                       ultimately optomistic
+Nr. 1 -  Initial commit Nr. 1                                       ultimately optomistic \n
 Nr. 2 -  Initial commit Nr. 2                                       Imagery and stuff
 Nr. 3 -  Removed the Standby Bot Token Placeholder
 Nr. 4 -  First major push to the repository                         I am optomistic! 
