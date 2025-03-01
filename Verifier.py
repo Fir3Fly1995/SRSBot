@@ -12,12 +12,16 @@ import threading
 import certifi
 import ssl
 import queue
+import time
+
+print(time.strftime('%Y-%m-%d %H:%M:%S', time.gmtime()))
 
 # Define the paths to the variable files
 bot_items_dir = os.path.join(os.getenv('LOCALAPPDATA'), 'SRSBot', 'Bot_Items')
 token_file_path = os.path.join(bot_items_dir, 'token.txt')
 channel_file_path = os.path.join(bot_items_dir, 'channel.txt')
 roles_file_path = os.path.join(bot_items_dir, 'roles.txt')
+cacert_path = os.path.join(bot_items_dir, 'cacert.pem')
 
 # Read the bot token from the file
 BOT_TOKEN = None
@@ -101,7 +105,7 @@ async def verify_command(interaction: discord.Interaction, rsi_username: str = N
                 url = f"https://robertsspaceindustries.com/en/citizens/{rsi_username}"
                 logging.debug(f"Fetching RSI profile from URL: {url}")
                 ssl_context = ssl.create_default_context(cafile=certifi.where())
-                async with aiohttp.AsyncClient(verify=ssl_context) as client:
+                async with aiohttp.AsyncClient(verify=cacert_path) as client:
                     response = await client.get(url)
                 response.raise_for_status()  # Raise an exception for bad status codes (4xx or 5xx)
                 logging.debug(f"RSI profile fetched successfully for user: {interaction.user}")
