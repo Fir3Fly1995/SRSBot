@@ -13,7 +13,6 @@ import threading
 import certifi
 import ssl
 import httpx as aiohttp
-from httpx import aiohttp
 import queue
 
 # Configure logging
