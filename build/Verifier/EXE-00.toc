@@ -1,9 +1,9 @@
 ('C:\\Users\\Alex Edwards\\Documents\\GitHub\\SRSBot\\dist\\Verifier.exe',
- False,
+ True,
  False,
  False,
  'C:\\Users\\Alex '
- 'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\PyInstaller\\bootloader\\images\\icon-windowed.ico',
+ 'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\PyInstaller\\bootloader\\images\\icon-console.ico',
  None,
  False,
  False,
@@ -3148,9 +3148,9 @@
  [],
  False,
  False,
- 1740846534,
- [('runw.exe',
+ 1740846771,
+ [('run.exe',
    'C:\\Users\\Alex '
-   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\PyInstaller\\bootloader\\Windows-64bit-intel\\runw.exe',
+   'Edwards\\Documents\\GitHub\\SRSBot\\srs_env\\Lib\\site-packages\\PyInstaller\\bootloader\\Windows-64bit-intel\\run.exe',
    'EXECUTABLE')],
  'C:\\Program Files\\Python313\\python313.dll')
