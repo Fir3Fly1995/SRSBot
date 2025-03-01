@@ -1,4 +1,5 @@
 # Nr. 30 is the last known good checkpoint
+# putting this because apparently GitHub isnt pushing the update!
 import discord
 from discord.ext import commands
 import random
