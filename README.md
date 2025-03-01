@@ -1,2 +1,5 @@
 # SRSBot
- The official RSRBot GitHub Repo
+ The official SRSBot GitHub Repo
+ 
+
+/p1 Notes
