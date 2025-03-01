@@ -104,7 +104,8 @@ async def verify_command(interaction: discord.Interaction, rsi_username: str = N
                 url = f"https://robertsspaceindustries.com/en/citizens/{rsi_username}"
                 logging.debug(f"Fetching RSI profile from URL: {url}")
                 ssl_context = ssl.create_default_context(cafile=certifi.where())
-                response = requests.get(url, verify=ssl_context)  # Use the ssl_context in your requests
+                async with aiohttp.AsyncClient(verify=ssl_context) as client:
+                    response = await client.get(url)
                 response.raise_for_status()  # Raise an exception for bad status codes (4xx or 5xx)
                 logging.debug(f"RSI profile fetched successfully for user: {interaction.user}")
 
@@ -141,7 +142,7 @@ async def verify_command(interaction: discord.Interaction, rsi_username: str = N
                     await interaction.followup.send("Could not find the bio section on your RSI profile. Please make sure your profile is public.", ephemeral=True)  # More informative message
                     logging.warning(f"Bio section not found on RSI profile for user: {interaction.user}")
 
-            except requests.exceptions.RequestException as e:
+            except aiohttp.RequestError as e:
                 logging.error(f'Error checking RSI profile: {e}')
                 await interaction.followup.send(f"Error checking RSI profile: {e}", ephemeral=True)
             except Exception as e:
