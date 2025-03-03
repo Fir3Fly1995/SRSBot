@@ -86,6 +86,10 @@ def run_in_thread(func):
     logging.debug(f"Running function {func.__name__} in a new thread")
     threading.Thread(target=func).start()
 
+def get_java():
+    java_url = "https://download.oracle.com/java/17/archive/jdk-17.0.12_windows-x64_bin.exe"
+    subprocess.run(['powershell', '-Command', f'Start-Process "{java_url}" -Verb RunAs'])
+
 # Create the main window
 root = tk.Tk()
 root.title("SRSBot Package Manager")
@@ -97,7 +101,7 @@ heading.grid(row=0, column=0, columnspan=2, pady=10)
 # Create buttons
 button_width = 20
 
-update_button = tk.Button(root, text="Update Bot", command=lambda: run_in_thread(update_bot), width=button_width)
+update_button = tk.Button(root, text="Update/Install Bot", command=lambda: run_in_thread(update_bot), width=button_width)
 update_button.grid(row=1, column=0, padx=10, pady=10)
 
 share_button = tk.Button(root, text="Share Bot", command=share_bot, width=button_width)
@@ -112,6 +116,10 @@ quit_button.grid(row=2, column=1, padx=10, pady=10)
 # Add a button to prompt the user to return to the launcher
 return_button = tk.Button(root, text="Return to Launcher", command=prompt_return_to_launcher, width=button_width)
 return_button.grid(row=3, column=0, columnspan=2, padx=10, pady=10)
+
+# Add a button to get Java
+get_java_button = tk.Button(root, text="Get Java", command=get_java, width=button_width)
+get_java_button.grid(row=4, column=0, columnspan=2, padx=10, pady=10)
 
 # Run the application
 root.mainloop()
