@@ -1,0 +1,39 @@
+Current issues
+    This list contains the current issues we are facing with the various components. 
+
+
+    Launcher
+
+
+    Package Manager
+
+
+    Bot
+        Launcher - Verifier.py - Console - Security     : Ceritifi is unable to get past the certification steps for the bot to do a handshake with Discord.com [Level is critical]
+
+    Installer
+
+
+    Recovery Machine
+
+
+Fixed
+    This list contains what has been fixed, pushed directly to the repository
+
+
+    Launcher
+        Launcher - Arguments - Console Errors           : Console displays whether we want it to display or not. 
+        Launcher - Arguments - Console Errors           : Console displayed thatt he internal update mechanism was not fetching and merging files acorrectly. 
+        Launcher - Logging - Log outputs                : Logs were being placed everywhere they shouldnt be placed. 
+
+    Package Manager
+        Pkg_Mgr - Updates - integrations                : Updates were not being integrated in the corect directories. 
+
+    Bot
+        Launcher - Verifier.py - Launch                 : Verifier.py is not launching
+
+
+    Installer
+
+
+    Recovery Machine
