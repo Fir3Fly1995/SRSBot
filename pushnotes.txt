@@ -66,3 +66,4 @@ Nr. 58 - Pushnotes, issues and readme updated - Moving to Java      I hate java!
 Nr. 2  - Made first exe testing file for deployment Nr. 59 Same      Right, lets see if java fixes it. 
 Nr. 60 - Big huge assembly project here!                            I hope this works!
 Nr. 61 - I forgot the "requests" package in the exe                 note to self: Check for yellow squiggly lines
+Nr. 62 - Rebuilt the exe for Verifier due to not starting           I have no witty comment

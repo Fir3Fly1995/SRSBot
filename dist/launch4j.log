@@ -1,0 +1,20 @@
+
+
+Version:	3.50
+CmdLine:	C:\Users\Alex Edwards\Documents\GitHub\SRSBot\dist\Verifier.exe --l4j-debug
+JNI:		No
+WOW64:		Yes
+Working dir:	C:\Users\Alex Edwards\Documents\GitHub\SRSBot\dist\.
+Requires JDK:	No
+Requires 64-Bit: No
+Java min ver:	1.017.000
+Java max ver:	
+Substitute:	JAVA_HOME = C:\Program Files\Java\jdk-23
+Substitute:	PATH = C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files\Python312\Scripts;C:\Program Files\Python312;C:\Program Files (x86)\Common Files\Oracle\Java\java8path;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\dotnet\;C:\WINDOWS\AtlasModules;C:\WINDOWS\AtlasModules\Tools;C:\WINDOWS\AtlasModules\Scripts;C:\Program Files\NVIDIA Corporation\NVIDIA app\NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\PuTTY\;C:\Program Files\Git\cmd;C:\Program Files\Java\jdk-23\bin;C:\Users\Alex Edwards\Documents\GitHub\RSI_Verifications\SRSBotJava\apache-maven-3.9.9\bin;C:\Users\Alex Edwards\AppData\Roaming\Python\Python313\Scripts';C:\Program Files\Apache\Maven\bin;C:\Users\Alex Edwards\AppData\Local\Programs\Python\Python312\Scripts\;C:\Users\Alex Edwards\AppData\Local\Programs\Python\Python312\;C:\Users\Alex Edwards\AppData\Local\Programs\Python\Launcher\;C:\Users\Alex Edwards\AppData\Local\Microsoft\WindowsApps;C:\Users\Alex Edwards\.lmstudio\bin;C:\Users\Alex Edwards\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Alex Edwards\AppData\Local\GitHubDesktop\bin;C:\Program Files\Java\jdk-23\bin
+JRE paths:	C:\Program Files\Java\jdk-23;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files\Python312\Scripts;C:\Program Files\Python312;C:\Program Files (x86)\Common Files\Oracle\Java\java8path;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\dotnet\;C:\WINDOWS\AtlasModules;C:\WINDOWS\AtlasModules\Tools;C:\WINDOWS\AtlasModules\Scripts;C:\Program Files\NVIDIA Corporation\NVIDIA app\NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\PuTTY\;C:\Program Files\Git\cmd;C:\Program Files\Java\jdk-23\bin;C:\Users\Alex Edwards\Documents\GitHub\RSI_Verifications\SRSBotJava\apache-maven-3.9.9\bin;C:\Users\Alex Edwards\AppData\Roaming\Python\Python313\Scripts';C:\Program Files\Apache\Maven\bin;C:\Users\Alex Edwards\AppData\Local\Programs\Python\Python312\Scripts\;C:\Users\Alex Edwards\AppData\Local\Programs\Python\Python312\;C:\Users\Alex Edwards\AppData\Local\Programs\Python\Launcher\;C:\Users\Alex Edwards\AppData\Local\Microsoft\WindowsApps;C:\Users\Alex Edwards\.lmstudio\bin;C:\Users\Alex Edwards\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Alex Edwards\AppData\Local\GitHubDesktop\bin;C:\Program Files\Java\jdk-23\bin
+Check launcher:	C:\Program Files\Java\jdk-23\bin\javaw.exe (OK)
+Version string: 1.023.000_002 / 64-Bit (OK)
+Launcher:	C:\Program Files\Java\jdk-23\bin\javaw.exe
+Launcher args:	-jar "C:\Users\Alex Edwards\Documents\GitHub\SRSBot\dist\Verifier.exe"
+Args length:	70/32768 chars
+Exit code:	0
