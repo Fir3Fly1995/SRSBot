@@ -6,8 +6,9 @@ import shutil
 import requests
 import logging
 import threading
+import zipfile
 
-# Configure logging for requesting thingses. 
+# Configure logging for requesting thingses.
 log_file = 'Z:\\Testing Logs\\Package_Manager_Logs.log'
 logging.basicConfig(filename=log_file, level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
@@ -32,7 +33,13 @@ def update_bot():
         # Fetch and update files from GitHub
         fetch_file('https://github.com/Fir3Fly1995/SRSBot/raw/main/dist/Launcher.exe', os.path.join(bot_files_dir, 'Launcher.exe'))
         fetch_file('https://github.com/Fir3Fly1995/SRSBot/raw/main/Verifier.py', os.path.join(bot_files_dir, 'Verifier.py'))
-        
+        fetch_file('https://github.com/Fir3Fly1995/SRSBot/raw/main/srsenv.zip', os.path.join(bot_files_dir, 'srsenv.zip'))
+
+        # Unzip the srsenv.zip file
+        with zipfile.ZipFile(os.path.join(bot_files_dir, 'srsenv.zip'), 'r') as zip_ref:
+            zip_ref.extractall(bot_files_dir)
+        logging.info("srsenv.zip unzipped successfully")
+
         messagebox.showinfo("Success", "Bot updated successfully!")
         logging.info("Bot updated successfully")
     except Exception as e:
@@ -87,10 +94,6 @@ def run_in_thread(func):
     logging.debug(f"Running function {func.__name__} in a new thread")
     threading.Thread(target=func).start()
 
-def get_java():
-    java_url = "https://download.oracle.com/java/17/archive/jdk-17.0.12_windows-x64_bin.exe"
-    subprocess.run(['powershell', '-Command', f'Start-Process "{java_url}" -Verb RunAs'])
-
 # Create the main window
 root = tk.Tk()
 root.title("SRSBot Package Manager")
@@ -117,10 +120,6 @@ quit_button.grid(row=2, column=1, padx=10, pady=10)
 # Add a button to prompt the user to return to the launcher
 return_button = tk.Button(root, text="Return to Launcher", command=prompt_return_to_launcher, width=button_width)
 return_button.grid(row=3, column=0, columnspan=2, padx=10, pady=10)
-
-# Add a button to get Java
-get_java_button = tk.Button(root, text="Get Java", command=get_java, width=button_width)
-get_java_button.grid(row=4, column=0, columnspan=2, padx=10, pady=10)
 
 # Run the application
 root.mainloop()
