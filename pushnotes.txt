@@ -63,3 +63,4 @@ Nr. 56 - Nuclear bombed the living fucking bejaysus out of everything and went t
                                                                     It also broke due to SSL issues! 
 Nr. 57 - Made some slight changes for testing																							It still is not working. SSL Cert fetch issue
 Nr. 58 - Pushnotes, issues and readme updated - Moving to Java      I hate java! But, I will be sure to keep this one up-to-date and will push the completed bot to here. 
+Nr. 2 - Made first exe testing file for deployment Nr. 59 Same      Right, lets see if java fixes it. 
