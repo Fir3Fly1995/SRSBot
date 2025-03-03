@@ -45,7 +45,7 @@ Nr. 39 - Added even more logging                                    in vain
 Nr. 40 - Added logging to the logging events...                     don't ask... 
 Nr. 41 - Made fixes to Verifier.exe                                 it broke more! 
 Nr. 42 - Ended up in a loop of in event out of event loops thing    My brain was fried by this stage! 
-Nr. 43 - Fiddled with the last line of code                         In vain\
+Nr. 43 - Fiddled with the last line of code                         In vain
 Nr. 44 - Did something                                              I am still clueless... Sorry
 Nr. 45 - I gave up!                                                 5 days later! 
 
@@ -63,7 +63,7 @@ Nr. 56 - Nuclear bombed the living fucking bejaysus out of everything and went t
                                                                     It also broke due to SSL issues! 
 Nr. 57 - Made some slight changes for testing																							It still is not working. SSL Cert fetch issue
 Nr. 58 - Pushnotes, issues and readme updated - Moving to Java      I hate java! But, I will be sure to keep this one up-to-date and will push the completed bot to here. 
-Nr. 2  - Made first exe testing file for deployment Nr. 59 Same      Right, lets see if java fixes it. 
+Nr. 2  - Made first exe testing file for deployment Nr. 59 Same     Right, lets see if java fixes it. 
 Nr. 60 - Big huge assembly project here!                            I hope this works!
 Nr. 61 - I forgot the "requests" package in the exe                 note to self: Check for yellow squiggly lines
 Nr. 62 - Rebuilt the exe for Verifier due to not starting           I have no witty comment
@@ -74,4 +74,5 @@ Nr. 65 - Added pyperclip tot he SRSENV because, apparently I forgot it
                                                                     Witty comment here...
 Nr. 66 - Rebuilt srsenv as components were missing (despite not being)
                                                                     This is getting frustrating... 
-Nr. 67 - Forgot to install the srsenv shit.                         Can ahppen to anyone. lol
+Nr. 67 - Forgot to install the srsenv shit.                         Can happen to anyone. lol
+Nr. 69 - Cant revert, going to go nuclear!                          I hate that this really does not want to work at all... but, hey, thats life. 

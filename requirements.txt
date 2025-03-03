@@ -7,3 +7,4 @@ certifi
 pyperclip
 requests
 bs4
+pyinstaller

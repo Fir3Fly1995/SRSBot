@@ -1,10 +1,19 @@
+#!/%localappdata%/SRSBot/Bot_files/srsenv/Scripts/python
+
+import os
+import sys
+
+# Activate the virtual environment
+activate_this = os.path.join(os.getenv('LOCALAPPDATA'), 'SRSBot', 'bot_files', 'srsenv', 'Scripts', 'activate_this.py')
+with open(activate_this) as f:
+    exec(f.read(), {'__file__': activate_this})
+
 import discord
 from discord.ext import commands
 import random
 import httpx as aiohttp
 from bs4 import BeautifulSoup
 import asyncio
-import os
 import logging
 import certifi
 import ssl

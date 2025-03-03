@@ -3,7 +3,7 @@ from tkinter import messagebox
 import os
 import subprocess
 import logging
-import pyperclip  # Import pyperclip to copy text to clipboard and adjust here so it can repackage
+import pyperclip  # Import pyperclip to copy text to clipboard
 import requests
 import time
 import threading
@@ -18,6 +18,7 @@ channel_file = os.path.join(bot_items_dir, 'channel.txt')
 roles_file = os.path.join(bot_items_dir, 'roles.txt')
 log_file = 'Z:\\Testing Logs\\Launcher_Logs.log'
 batch_file = os.path.join(bot_items_dir, 'run_verifier.bat')
+bot_files_dir = os.path.join(os.getenv('LOCALAPPDATA'), 'SRSBot', 'bot_files')
 
 # Configure logging
 logging.basicConfig(filename=log_file, level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -78,8 +79,8 @@ def create_batch_file():
         with open(batch_file, 'w') as f:
             f.write(f'@echo off\n')
             f.write(f'cd /d {os.path.dirname(__file__)}\n')
-            f.write(f'call activate srsenv\n')
-            f.write(f'python Verifier.py\n')
+            f.write(f'call {os.path.join(bot_files_dir, "srsenv", "Scripts", "activate.bat")}\n')
+            f.write(f'python {os.path.join(bot_files_dir, "Verifier.py")}\n')
         logging.info("Batch file created successfully.")
     except Exception as e:
         logging.error(f"Failed to create batch file: {e}")

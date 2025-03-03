@@ -16,7 +16,7 @@ Source: "C:\Users\Alex Edwards\Documents\GitHub\SRSBot\imagery\boticon.ico"; Des
 Source: "C:\Users\Alex Edwards\Documents\GitHub\SRSBot\imagery\SRSLogo.ico"; DestDir: "{localappdata}\SRSBot\bot_files\Imagery"; Flags: ignoreversion
 Source: "C:\Users\Alex Edwards\Documents\GitHub\SRSBot\imagery\SRS Discord Logo.png"; DestDir: "{localappdata}\SRSBot\bot_files\Imagery"; Flags: ignoreversion
 Source: "C:\Users\Alex Edwards\Documents\GitHub\SRSBot\imagery\SRS Logo Official.jpg"; DestDir: "{localappdata}\SRSBot\bot_files\Imagery"; Flags: ignoreversion
-Source: "C:\Users\Alex Edwards\Downloads\python-3.12.0-amd64.exe"; DestDir: "{localappdata}\Temp\SRSBotPy"; Flags: ignoreversion
+Source: "C:\Users\Alex Edwards\Downloads\python-3.13.2-amd64.exe"; DestDir: "{localappdata}\Temp\SRSBotPy"; Flags: ignoreversion
 
 [Dirs]
 Name: "{localappdata}\SRSBot\Updater"
@@ -26,7 +26,7 @@ Name: "{group}\SRSBot Launcher"; Filename: "{localappdata}\SRSBot\bot_files\Laun
 Name: "{commondesktop}\SRSBot Launcher"; Filename: "{localappdata}\SRSBot\bot_files\Launcher.exe"; IconFilename: "{localappdata}\SRSBot\bot_files\Imagery\boticon.ico"
 
 [Run]
-Filename: "{localappdata}\Temp\SRSBotPy\python-3.12.0-amd64.exe"; Parameters: "/quiet InstallAllUsers=1 PrependPath=1"; StatusMsg: "Installing Python..."; Flags: waituntilterminated
+Filename: "{localappdata}\Temp\SRSBotPy\python-3.13.2-amd64.exe"; Parameters: "/quiet InstallAllUsers=1 PrependPath=1"; StatusMsg: "Installing Python..."; Flags: waituntilterminated
 Filename: "{localappdata}\SRSBot\bot_files\Launcher.exe"; Description: "Launch SRSBot"; Flags: nowait postinstall skipifsilent
 
 [Code]
