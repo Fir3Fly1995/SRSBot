@@ -3,7 +3,7 @@ from tkinter import messagebox
 import os
 import subprocess
 import logging
-import pyperclip  # Import pyperclip to copy text to clipboard
+import pyperclip  # Import pyperclip to copy text to clipboard and adjust here so it can repackage
 import requests
 import time
 import threading
