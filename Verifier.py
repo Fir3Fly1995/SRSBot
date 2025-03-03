@@ -105,45 +105,45 @@ async def verify_command(interaction: discord.Interaction, rsi_username: str = N
                 url = f"https://robertsspaceindustries.com/en/citizens/{rsi_username}"
                 logging.debug(f"Fetching RSI profile from URL: {url}")
                 ssl_context = ssl.create_default_context(cafile=certifi.where())
-                async with aiohttp.AsyncClient(verify=cacert_path) as client:
-                    response = await client.get(url)
-                response.raise_for_status()  # Raise an exception for bad status codes (4xx or 5xx)
-                logging.debug(f"RSI profile fetched successfully for user: {interaction.user}")
+                async with aiohttp.ClientSession(connector=aiohttp.TCPConnector(ssl=ssl_context)) as session:
+                    async with session.get(url) as response:
+                        response.raise_for_status()  # Raise an exception for bad status codes (4xx or 5xx)
+                        logging.debug(f"RSI profile fetched successfully for user: {interaction.user}")
 
-                soup = BeautifulSoup(response.content, "html.parser")
-                bio_element = soup.select_one("div.bio div.value")  # More specific CSS selector
-                if bio_element:
-                    bio_text = bio_element.text.strip()
-                    logging.debug(f"Bio text found: {bio_text}")
-                    if code in bio_text:
-                        verified_role = discord.utils.get(interaction.guild.roles, name=VERIFIED_ROLE)  # Gets the role object
-                        p_ver_role = discord.utils.get(interaction.guild.roles, name=P_VER_ROLE)  # Gets the "P-Ver" role object
-                        if verified_role and p_ver_role:
-                            await interaction.user.add_roles(verified_role)  # Gives the user the role
-                            await interaction.user.edit(nick=rsi_username)  # Change the user's nickname to match their RSI profile name
-                            logging.info(f'Attempted to change nickname for user {interaction.user} to {rsi_username}')
+                        soup = BeautifulSoup(await response.text(), "html.parser")
+                        bio_element = soup.select_one("div.bio div.value")  # More specific CSS selector
+                        if bio_element:
+                            bio_text = bio_element.text.strip()
+                            logging.debug(f"Bio text found: {bio_text}")
+                            if code in bio_text:
+                                verified_role = discord.utils.get(interaction.guild.roles, name=VERIFIED_ROLE)  # Gets the role object
+                                p_ver_role = discord.utils.get(interaction.guild.roles, name=P_VER_ROLE)  # Gets the "P-Ver" role object
+                                if verified_role and p_ver_role:
+                                    await interaction.user.add_roles(verified_role)  # Gives the user the role
+                                    await interaction.user.edit(nick=rsi_username)  # Change the user's nickname to match their RSI profile name
+                                    logging.info(f'Attempted to change nickname for user {interaction.user} to {rsi_username}')
 
-                            await interaction.followup.send(f"Your nickname has been updated to: {rsi_username}. You have been verified. You can safely go ahead and remove the code from your profile now if you want to. Welcome to the SRS, Citizen!\n\nHead to <#{WELCOME_CHANNEL}> to get chatting!")
-                            logging.info(f'Sent verification success message to user: {interaction.user}')
+                                    await interaction.followup.send(f"Your nickname has been updated to: {rsi_username}. You have been verified. You can safely go ahead and remove the code from your profile now if you want to. Welcome to the SRS, Citizen!\n\nHead to <#{WELCOME_CHANNEL}> to get chatting!")
+                                    logging.info(f'Sent verification success message to user: {interaction.user}')
 
-                            await asyncio.sleep(3)  # Wait for 3 seconds before removing the "P-Ver" role
-                            await interaction.user.remove_roles(p_ver_role)  # Removes the "P-Ver" role
-                            logging.info(f'Removed "P-Ver" role from user {interaction.user}')
+                                    await asyncio.sleep(3)  # Wait for 3 seconds before removing the "P-Ver" role
+                                    await interaction.user.remove_roles(p_ver_role)  # Removes the "P-Ver" role
+                                    logging.info(f'Removed "P-Ver" role from user {interaction.user}')
 
-                            # await delete_messages_after(interaction, 1337856225022578719, delay=8)
+                                    # await delete_messages_after(interaction, 1337856225022578719, delay=8)
+                                else:
+                                    await interaction.followup.send("Error: 'Verified' or 'P-Ver' role not found on this server.")
+                                    logging.error(f"'Verified' or 'P-Ver' role not found on this server for user: {interaction.user}")
+                                del verification_codes[user_id]  # Remove the code after successful verification
+                                logging.debug(f"Removed verification code for user: {interaction.user}")
+                            else:
+                                await interaction.followup.send("Code not found in your RSI bio. Please double-check.", ephemeral=True)  # Ephemeral for errors too
+                                logging.warning(f"Code not found in RSI bio for user: {interaction.user}")
                         else:
-                            await interaction.followup.send("Error: 'Verified' or 'P-Ver' role not found on this server.")
-                            logging.error(f"'Verified' or 'P-Ver' role not found on this server for user: {interaction.user}")
-                        del verification_codes[user_id]  # Remove the code after successful verification
-                        logging.debug(f"Removed verification code for user: {interaction.user}")
-                    else:
-                        await interaction.followup.send("Code not found in your RSI bio. Please double-check.", ephemeral=True)  # Ephemeral for errors too
-                        logging.warning(f"Code not found in RSI bio for user: {interaction.user}")
-                else:
-                    await interaction.followup.send("Could not find the bio section on your RSI profile. Please make sure your profile is public.", ephemeral=True)  # More informative message
-                    logging.warning(f"Bio section not found on RSI profile for user: {interaction.user}")
+                            await interaction.followup.send("Could not find the bio section on your RSI profile. Please make sure your profile is public.", ephemeral=True)  # More informative message
+                            logging.warning(f"Bio section not found on RSI profile for user: {interaction.user}")
 
-            except aiohttp.RequestError as e:
+            except aiohttp.ClientConnectorCertificateError as e:
                 logging.error(f'Error checking RSI profile: {e}')
                 await interaction.followup.send(f"Error checking RSI profile: {e}", ephemeral=True)
             except Exception as e:
