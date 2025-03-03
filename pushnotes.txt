@@ -68,3 +68,10 @@ Nr. 60 - Big huge assembly project here!                            I hope this 
 Nr. 61 - I forgot the "requests" package in the exe                 note to self: Check for yellow squiggly lines
 Nr. 62 - Rebuilt the exe for Verifier due to not starting           I have no witty comment
 Nr. 63 - Discovered the exe is not working. Reverting to con        Lets hope the console will actually rectify the issue
+Nr. 64 - Updated package manager and inno script to have srsenv and the py file
+                                                                    Yes, ran out of room again... Issue found, fixing now! 
+Nr. 65 - Added pyperclip tot he SRSENV because, apparently I forgot it
+                                                                    Witty comment here...
+Nr. 66 - Rebuilt srsenv as components were missing (despite not being)
+                                                                    This is getting frustrating... 
+Nr. 67 - Forgot to install the srsenv shit.                         Can ahppen to anyone. lol
