@@ -7,7 +7,7 @@ import requests
 import logging
 import threading
 
-# Configure logging
+# Configure logging for requesting thingses. 
 log_file = 'Z:\\Testing Logs\\Package_Manager_Logs.log'
 logging.basicConfig(filename=log_file, level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
