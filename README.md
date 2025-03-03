@@ -61,3 +61,4 @@ Nr. 54 - Added a time checker!                                      Havent teste
 Nr. 55 - Did an experimental rollback                               Rolling them balls for the bingo!\
 Nr. 56 - Nuclear bombed the living fucking bejaysus out of everything and went to python 3.12 and we're converting the bot to C++\
                                                                     It also broke due to SSL issues! \
+Nr. 57 - Made some slight changes for testing																							It still is not working. SSL Cert fetch issue\
