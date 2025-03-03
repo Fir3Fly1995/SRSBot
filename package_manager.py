@@ -31,7 +31,8 @@ def update_bot():
     try:
         # Fetch and update files from GitHub
         fetch_file('https://github.com/Fir3Fly1995/SRSBot/raw/main/dist/Launcher.exe', os.path.join(bot_files_dir, 'Launcher.exe'))
-        fetch_file('https://github.com/Fir3Fly1995/SRSBot/raw/main/dist/Verifier.exe', os.path.join(bot_files_dir, 'Verifier.exe'))
+        fetch_file('https://github.com/Fir3Fly1995/SRSBot/raw/main/Verifier.py', os.path.join(bot_files_dir, 'Verifier.py'))
+        
         messagebox.showinfo("Success", "Bot updated successfully!")
         logging.info("Bot updated successfully")
     except Exception as e:

@@ -67,3 +67,4 @@ Nr. 2  - Made first exe testing file for deployment Nr. 59 Same      Right, lets
 Nr. 60 - Big huge assembly project here!                            I hope this works!
 Nr. 61 - I forgot the "requests" package in the exe                 note to self: Check for yellow squiggly lines
 Nr. 62 - Rebuilt the exe for Verifier due to not starting           I have no witty comment
+Nr. 63 - Discovered the exe is not working. Reverting to con        Lets hope the console will actually rectify the issue

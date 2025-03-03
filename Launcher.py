@@ -17,6 +17,7 @@ token_file = os.path.join(bot_items_dir, 'token.txt')
 channel_file = os.path.join(bot_items_dir, 'channel.txt')
 roles_file = os.path.join(bot_items_dir, 'roles.txt')
 log_file = 'Z:\\Testing Logs\\Launcher_Logs.log'
+batch_file = os.path.join(bot_items_dir, 'run_verifier.bat')
 
 # Configure logging
 logging.basicConfig(filename=log_file, level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -71,18 +72,24 @@ def write_data():
         update_ticker(f"Failed to write data: {e}")
         logging.error(f"Failed to write data: {e}")
 
+def create_batch_file():
+    logging.debug("Creating batch file to run Verifier.py")
+    try:
+        with open(batch_file, 'w') as f:
+            f.write(f'@echo off\n')
+            f.write(f'cd /d {os.path.dirname(__file__)}\n')
+            f.write(f'call activate srsenv\n')
+            f.write(f'python Verifier.py\n')
+        logging.info("Batch file created successfully.")
+    except Exception as e:
+        logging.error(f"Failed to create batch file: {e}")
+
 def start_bot():
     logging.debug("Starting bot")
     try:
-        srsbot_dir = os.path.join(os.getenv('LOCALAPPDATA'), 'SRSBot', 'bot_files')
-        verifier_exe = os.path.join(srsbot_dir, 'Verifier.exe')
-
-        # Log the command for debugging purposes
-        logging.debug(f"Command to start bot: {verifier_exe}")
-
-        # Start the executable directly
-        subprocess.Popen(verifier_exe, shell=True)
-        logging.debug("Verifier.exe started")
+        create_batch_file()
+        subprocess.Popen(['cmd.exe', '/c', batch_file], shell=True)
+        logging.debug("Verifier.py started via batch file")
     except Exception as e:
         messagebox.showerror("Error", f"Failed to start the bot: {e}")
         update_ticker(f"Failed to start the bot: {e}")

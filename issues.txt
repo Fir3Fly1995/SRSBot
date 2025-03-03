@@ -32,6 +32,7 @@ Fixed
 
     Bot
         Launcher - Verifier.py - Launch                 : Verifier.py is not launching
+        Standalone - Verifier.py - Clean                : Verifier.py runs in the dev environment successfully. Rolling backl to console only operation. 
 
 
     Installer

@@ -6,13 +6,11 @@ from bs4 import BeautifulSoup
 import asyncio
 import os
 import logging
-import tkinter as tk
-from tkinter.scrolledtext import ScrolledText
-import threading
 import certifi
 import ssl
 import queue
 import time
+import threading
 
 print(time.strftime('%Y-%m-%d %H:%M:%S', time.gmtime()))
 
@@ -177,55 +175,21 @@ async def run_bot():
     else:
         log_queue.put("Bot token is None. Cannot start the bot.")
 
-# Create the main window
-logging.debug("Creating main window")
-root = tk.Tk()
-root.title("SRSBot Verifier")
-
-# Create a console output window
-logging.debug("Creating console output window")
-console_output = ScrolledText(root, wrap=tk.WORD, width=100, height=20, font=("Helvetica", 10))
-console_output.grid(row=0, column=0, padx=10, pady=10, columnspan=2)
-
-# Redirect logging to the console output window
-class TextHandler(logging.Handler):
-    def __init__(self, widget):
-        logging.Handler.__init__(self)
-        self.widget = widget
-
-    def emit(self, record):
-        msg = self.format(record)
-        def append():
-            self.widget.configure(state='normal')
-            self.widget.insert(tk.END, msg + '\n')
-            self.widget.configure(state='disabled')
-            self.widget.yview(tk.END)
-        self.widget.after(0, append)
-
-logging.debug("Setting up logging to console output window")
-text_handler = TextHandler(console_output)
-logging.getLogger().addHandler(text_handler)
-
-# Create a quit button
-logging.debug("Creating quit button")
-quit_button = tk.Button(root, text="Quit", command=root.quit)
-quit_button.grid(row=1, column=1, padx=10, pady=10, sticky='e')
-
 # Function to process log messages from the queue
 def process_log_queue():
     while not log_queue.empty():
         msg = log_queue.get()
         logging.info(msg)
-    root.after(100, process_log_queue)
 
 # Start processing the log queue
-root.after(100, process_log_queue)
+async def main():
+    logging.debug("Starting main function")
+    threading.Thread(target=lambda: asyncio.run(run_bot())).start()
+    while True:
+        process_log_queue()
+        await asyncio.sleep(1)
 
-# Run the bot in a separate thread
-logging.debug("Starting bot thread")
-threading.Thread(target=lambda: asyncio.run(run_bot())).start()
-
-# Run the main loop
-logging.debug("Starting main loop")
-root.mainloop()
-logging.debug("Main loop ended")
+# Run the main function
+if __name__ == "__main__":
+    logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+    asyncio.run(main())

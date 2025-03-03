@@ -2,7 +2,7 @@
 
 
 a = Analysis(
-    ['launcher.py'],
+    ['Launcher.py'],
     pathex=[],
     binaries=[],
     datas=[],
@@ -22,7 +22,7 @@ exe = EXE(
     a.binaries,
     a.datas,
     [],
-    name='launcher',
+    name='Launcher',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
