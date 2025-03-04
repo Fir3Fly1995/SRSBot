@@ -1,103 +1,12 @@
-files are being all placed into %localAppData%\SRSBot 
-    The bot items are in the bot_items folder. 
+SRS Build notes.
 
-There are 3 major folders inside SRSBot on the users computer! 
-    bot_files
-    updater
-    bot_items
-
-Inno installer needs to install the files in the following places, and from the following places, indicated by a --> to their destination. 
-
-Step 1: The installer
-
-C:\Users\Alex Edwards\Documents\GitHub\SRSBot\
-    dist\Launcher.exe             -->     %LAD%\SRSBot\bot_files\Launcher.exe
-    dist\package_manager.exe      -->     %LAD%\SRSBot\Updater\package_manager.exe
-    package_manager.spec          -->     %LAD%\SRSBot\Updater\package_manager.spec
-    package_manager.py            -->     %LAD%\SRSBot\Updater\package_manager.py
-    Launcher.spec                 -->     %LAD%\SRSBot\bot_files\Launcher.spec
-    Launcher.py                   -->     %LAD%\SRSBot\bot_files\Launcher.py
-    Verifier.py                   -->     %LAD%\SRSBot\bot_files\Verifier.py
-    srsenv\                       -->     %LAD%\SRSBot\bot_files\srsenv (the folder)
-    imagery\boticon.ico           -->     %LAD%\SRSBot\bot_files\Imagery\boticon.ico
-    imagery\SRSLogo.ico           -->     %LAD%\SRSBot\bot_files\Imagery\SRSLogo.ico
-    imagery\SRS Discord Logo.png  -->     %LAD%\SRSBot\bot_files\Imagery\SRS Discord Logo.png
-    imagery\SRS Logo Official.jpg -->     %LAD%\SRSBot\bot_files\Imagery\SRS Logo Official.jpg
-
-
-
-We want to have a desktop icon made for the Launcher, called "SRSBot Launcher"
-launcher icon is found at 
-    C:\Users\Alex Edwards\Documents\GitHub\SRSBot\Imagery\Boticon.ico 
-
-Step 2: The package_manager
-Package manager does 3 major things. It checks for updates, installs updates and enables the uninstallation of the bot, launcher and itself, and it allows a person to bundle up the bot to share it with friends. 
-
-Step 3: Updates for the Package manager
-To start he update process, The updater needs to go to the github repository and fetch the following stuff! 
-    https://github.com/Fir3Fly1995/SRSBot/ --> Files for direct fetch and integration
-        Launcher.spec                 -->     %LAD%\SRSBot\bot_files\Launcher.spec
-        Launcher.py                   -->     %LAD%\SRSBot\bot_files\Launcher.py
-        dist\Launcher.exe             -->     %LAD%\SRSBot\bot_files\Launcher.exe
-        Verifier.py                   -->     %LAD%\SRSBot\bot_files\Verifier.py
-
-Step 4: Removing the SRSBot and all files. 
-    1. The updater will rewrite the unins000.dat file to include everything within the SRSBot folder, and the folder itself, so that the user can completely remove the bot itself. 
-    2. The updater will copy the contents of the bot_items folder and create a file on the users desktop called "Saved Bot Info.txt"
-        The file will be laid out as below:
-
-        Discord Bot Token
-        "   "
-
-        Welcome Channel
-        "   "
-
-        Pre-Verification Role
-        "   "
-
-        Verified Role
-        "   "
-    3. The updater will then delete the contents of bot_items
-    4. The updater will then run unins000.exe
-    5. The Updater will close itself the launcher and Verifier.py applications so the uninstall can be done. 
-
-Step 5: Updating the package manager
-    1. Add a butotn called "pkg" to update the package manager itself. 
-    2. go to https://github.com/Fir3Fly1995/SRSBot/ --> Files for direct fetch and integration
-        dist\package_manager.exe      -->     %LAD%\SRSBot\Updater\package_manager.exe
-        package_manager.spec          -->     %LAD%\SRSBot\Updater\package_manager.spec
-        package_manager.py            -->     %LAD%\SRSBot\Updater\package_manager.py
-    this will be directly integrated into the SRSBot\updater folder, no need for a manifest or anything like that, it will just outright replace the files directly from GitHub. 
-We will handle a more discrete method for ensuring the most up-to-date pkg_mgr is available for use by integrating it into another function of the launcher. 
-
-
-Tickers
-    Launcher
-        Default to display is "Standing By..." 
-        on click of Package manager
-            "Downloading Package Manager Updates" during the download. 
-            "Installing Updates" Display this for 3 seconds (because the updates are installed as they are downloaded, its a fake delayy to give the illusion of updates happening)
-            "Launching Package Manager" Display this for 3 seconds, then continue to launch the package manager, and to close the launcher as specified above. 
-        
-        On click of "Write Data" button
-            "Data saved Successfully..." on successful completion for 3 seconds, then revert back to "Standing By..."
-
-        On Click of "Start Bot"
-            "Starting Bot..." for 3 seconds, then proceed to the next step of the launch process. 
-            "Standing By..." after the 3 second timer expires. 
-            Pop-Up Dialogue Box --> The bot has been started. \n\n The command to start the bot itself is copied to your clipboard. \n\n 1. Click on the PowerShell (blue space in the opened window) \n 2. Press Ctrl + V \n 3. Hit the enter key \n\nThank you!
-                offer OK option to dismiss the dialogue box. 
-        On click of "Quit"
-            "Terminating Launcher. \n Thank you for using the SRS Bot." Wait 3 seconds, then terminate the launcher. 
-
-    package_manager
-        Default to display is "Waiting Input"
-
-Step 6: Get the bots stuff! 
-The path for the bot token, channel and the names of the roles are located at
-    %Localappdata%\SRSBot\Bot_Items\
-        Token               --> token.txt
-        Welcome Chanenl     --> channel.txt
-        Pending Role        --> roles.txt -> line 1
-        Verified Role       --> roles.txt -> line 2
-    These should be automatically imported to Verifier.py or, placed into Verifier.py or, Verifier.py should look for these items in their appropriate locations! 
+Installer collection                                        Installer placement                                         Installer backup placement (where declared)
+C:\users\Alex Edwards\Documents\GitHub\SRSBot\      -->     %localappdata%\SRSBot\
+dist\Launcher.exe                                   -->     %localappdata%\SRSBot\dist\Launcher.exe
+dist\Package_manager.exe                            -->     %localappdata%\SRSBot\dist\Package_manager.exe      --      %localappdata%\SRSBot\Recovery\Package_manager.exe
+Imagery\BotIcon.ico                                 -->     %localappdata%\SRSBot\Imagery\BotIcon.ico
+Imagery\SRS Discord Logo.png                        -->     %localappdata%\SRSBot\Imagery\SRS Discord Logo.png
+Imagery\SRS Logo Official.jpg                       -->     %localappdata%\SRSBot\Imagery\SRS Logo Official.jpg
+Imagery\SRSLogo.ico                                 -->     %localappdata%\SRSBot\Imagery\SRSLogo.ico
+srsenv\*                                            -->     %localappdata%\SRSBot\srsenv\*
+Log_Files\*                                         -->     %localappdata%\SRSBot\Log_Files\*

@@ -1,9 +1,7 @@
+pip
 discord.py
-httpx
 beautifulsoup4
 asyncio
-tk
-certifi
 pyperclip
 requests
 bs4

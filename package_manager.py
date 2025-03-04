@@ -4,13 +4,8 @@ import os
 import subprocess
 import shutil
 import requests
-import logging
 import threading
 import zipfile
-
-# Configure logging for requesting thingses.
-log_file = 'Z:\\Testing Logs\\Package_Manager_Logs.log'
-logging.basicConfig(filename=log_file, level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Define directories and file paths
 srsbot_dir = os.path.join(os.getenv('LOCALAPPDATA'), 'SRSBot')
@@ -20,15 +15,16 @@ bot_items_dir = os.path.join(srsbot_dir, 'Bot_Items')
 saved_info_file = os.path.join(os.path.expanduser('~'), 'Desktop', 'Saved Bot Info.txt')
 
 def fetch_file(url, dest):
-    logging.debug(f"Fetching file from {url} to {dest}")
-    response = requests.get(url)
-    response.raise_for_status()
-    with open(dest, 'wb') as f:
-        f.write(response.content)
-    logging.debug(f"File fetched successfully from {url} to {dest}")
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+        with open(dest, 'wb') as f:
+            f.write(response.content)
+        print(f"File fetched successfully from {url} to {dest}")
+    except Exception as e:
+        print(f"Failed to fetch file from {url} to {dest}: {e}")
 
 def update_bot():
-    logging.debug("Updating bot")
     try:
         # Fetch and update files from GitHub
         fetch_file('https://github.com/Fir3Fly1995/SRSBot/raw/main/dist/Launcher.exe', os.path.join(bot_files_dir, 'Launcher.exe'))
@@ -38,16 +34,14 @@ def update_bot():
         # Unzip the srsenv.zip file
         with zipfile.ZipFile(os.path.join(bot_files_dir, 'srsenv.zip'), 'r') as zip_ref:
             zip_ref.extractall(bot_files_dir)
-        logging.info("srsenv.zip unzipped successfully")
+        print("srsenv.zip unzipped successfully")
 
         messagebox.showinfo("Success", "Bot updated successfully!")
-        logging.info("Bot updated successfully")
     except Exception as e:
         messagebox.showerror("Error", f"Failed to update bot: {e}")
-        logging.error(f"Failed to update bot: {e}")
+        print(f"Failed to update bot: {e}")
 
 def uninstall_bot():
-    logging.debug("Uninstalling bot")
     try:
         # Step 1: Save bot info to desktop
         with open(saved_info_file, 'w') as f:
@@ -62,19 +56,19 @@ def uninstall_bot():
 
         # Step 2: Delete bot items
         shutil.rmtree(bot_items_dir)
-        logging.info("Bot items deleted")
+        print("Bot items deleted")
 
         # Step 3: Run uninstaller
         uninstaller = os.path.join(srsbot_dir, 'unins000.exe')
         subprocess.run([uninstaller], check=True)
-        logging.info("Uninstaller run successfully")
+        print("Uninstaller run successfully")
 
         # Step 4: Close the package manager and launcher
         root.quit()
-        logging.info("Package manager and launcher closed")
+        print("Package manager and launcher closed")
     except Exception as e:
         messagebox.showerror("Error", f"Failed to uninstall bot: {e}")
-        logging.error(f"Failed to uninstall bot: {e}")
+        print(f"Failed to uninstall bot: {e}")
 
 def share_bot():
     # Implement the logic to bundle up the bot to share it with friends
@@ -91,7 +85,6 @@ def prompt_return_to_launcher():
         root.quit()
 
 def run_in_thread(func):
-    logging.debug(f"Running function {func.__name__} in a new thread")
     threading.Thread(target=func).start()
 
 # Create the main window

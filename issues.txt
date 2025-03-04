@@ -11,6 +11,7 @@ Current issues
     Bot
         Launcher - Verifier.py - Console - Security     : Ceritifi is unable to get past the certification steps for the bot to do a handshake with Discord.com [Level is critical]
         Launcher - Verifier.java - Executable           : Executable is not launching as expected, or is not launching at all. 
+        Verifier.py - srsenv - Launch                   : Unable to launch Verifier as it cant find the environment or iots modules, despite them being in a mirrored directory. 
 
     Installer
 
