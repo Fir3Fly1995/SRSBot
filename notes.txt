@@ -1,12 +1,109 @@
 SRS Build notes.
 
-Installer collection                                        Installer placement                                         Installer backup placement (where declared)
+Installer collection                                        Installer placement
 C:\users\Alex Edwards\Documents\GitHub\SRSBot\      -->     %localappdata%\SRSBot\
 dist\Launcher.exe                                   -->     %localappdata%\SRSBot\dist\Launcher.exe
-dist\Package_manager.exe                            -->     %localappdata%\SRSBot\dist\Package_manager.exe      --      %localappdata%\SRSBot\Recovery\Package_manager.exe
+dist\Package_manager.exe                            -->     %localappdata%\SRSBot\dist\Package_manager.exe
+dist\SRS_Recover.exe                                -->     %localappdata%\SRSRecovery\SRS_Recover.exe
 Imagery\BotIcon.ico                                 -->     %localappdata%\SRSBot\Imagery\BotIcon.ico
 Imagery\SRS Discord Logo.png                        -->     %localappdata%\SRSBot\Imagery\SRS Discord Logo.png
 Imagery\SRS Logo Official.jpg                       -->     %localappdata%\SRSBot\Imagery\SRS Logo Official.jpg
 Imagery\SRSLogo.ico                                 -->     %localappdata%\SRSBot\Imagery\SRSLogo.ico
 srsenv\*                                            -->     %localappdata%\SRSBot\srsenv\*
 Log_Files\*                                         -->     %localappdata%\SRSBot\Log_Files\*
+
+C:\Users\Alex Edwards\Documents\GitHub\Stash
+Python-3.13.2-amd64.exe                             -->     %localappdata%\Temp\SRSPython\Python-3.13.2-amd64.exe -- Delete this directory on close of installer
+Check for the presence of %localappdata%\Temp\SRSLog\rcvr.log and move the rcvr.log file out of that directory and place it in %localappdata%\SRSBot\Log_Files\rcvr.log then delete the folder in the Temp directory (after all, its temporary). If there is no SRSLog directory, then skip this step.
+
+Recovery Platform Manager Requirements and placements: SRS_Recover.exe - Log to %localappdata%\Temp\SRSLog\rcvr.log
+    The Recovery Platform will do everything that the installer does, however, it will also fetch the unins000.dat and unins000.exe from GitHub, a copy of these things will be bundled with the installer. 
+
+Item placements and content. 
+    Main window will have 4 buttons. Each button is one step with the fourth being a "rebuild all" button. 
+    Button 1:   "Rebuild file structure"
+        Step 1: Remove srs_env and place it in                                  -->     %localappdata%\SRSRecovery\Crit\srs_env\*
+        Step 2: Remove Bot_Items and place it in                                -->     %localappdata%\SRSRecovery\Crit\Bot_Items\*
+        Step 3: delete %localappdata%\SRSBot folder
+    Button 2:   "Retrieve Files" This will go to GitHub and fetch the following files and place them in the corresponding directories
+                https://github.com/Fir3Fly1995/SRSBot/dist/Launcher.exe         -->     %localappdata%\SRSBot\dist\Launcher.exe
+                https://github.com/Fir3Fly1995/SRSBot/dist/Package_manager.exe  -->     %localappdata%\SRSBot\dist\package_manager.exe
+                https://github.com/Fir3Fly1995/SRSBot/Verifier.py               -->     %localappdata%\SRSBot\Verifier.py
+                https://github.com/Fir3Fly1995/SRSBot/Removers/unins000.dat     -->     %localappdata%\SRSBot\unins000.dat
+                https://github.com/Fir3Fly1995/SRSBot/Removers/unins000.exe     -->     %localappdata%\SRSBot\unins000.exe
+    Button 3:   "Assemble"
+        Step 1: Move %localappdata%\SRSRecovery\Crit\srs_env\*                  -->     %localappdata%\SRSBot\srs_env\*
+        Step 2: Move %localappdata%\SRSRecovery\Crit\Bot_Items\*                -->     %localappdata%\SRSBot\Bot_Items\*
+        Step 3: Verify the integrity of srs_env and Bot_Items
+        Step 4: Delete the %localappdata%\SRSRecovery\Crit directory (only if all files were properly moved)
+    Button 4:   "Recover All"
+        Step 1: go to GitHub and fetch the removers directory.
+        Step 2: Edit unins000.dat to instruct unins000.exe to remove the entire SRSBot folder from %localappdata%, keeping intact the removal of python from the users system.
+        Step 3: Edit unins000.dat to omit %localappdata%\SRSRecovery directory from the uninstall process.
+        Step 4: go to GitHub and initiate the download of the installer from the releases section, looking for the latest release. 
+        Step 5: Start cmd.exe and instruct it to wait for 5 seconds. In those 5 seconds, close SRS_Recover.exe. When the 5 seconds elapse, delete the %localappdata%\SRSRecovery Direcotory from the system then launch srsbotinstaller.exe from the users downloads folder, then close the cmd.exe instance. 
+
+package_manager handling of files. - Log to %localappdata%\SRSBot\Log_Files\Pkgmgr.log
+Adjust the package manager to handle the files and locations differently to how it currently does. 
+Item placements and content. 
+    Main window will have 6 buttons. and a progress bar at the bottom, it will fill based ont he file sizes and completion rate of updating. 
+    Button 1:   "Get Updates"
+        Step 1: Check for a manifest.txt at https://github.com/Fir3Fly1995/SRSManifest/manifest.txt if it does not exist, proceed with full update of all components
+        Step 2: If manifest.txt exists download it to %localappdata%\SRSRecovery\Files\manifest.txt and check what files need to be updated based on the timestamps next to the file names. If the timestamps do not differ from the local manifest.txt skip them. 
+        Step 3: If manifest.txt has timestamps differing for either launcher.exe or Verifier.py then close the correcponding application. (ie. if Verifier.py has a timestamp where the date and time are ahead of the local manifest.txt file, then force close it ahead of the update)
+        Step 4: Download the files directly to their destinations. 
+                Fetch the following and place in the appropriate locations
+                https://github.com/Fir3Fly1995/SRSBot/dist/Launcher.exe         -->     %localappdata%\SRSBot\dist\Launcher.exe
+                https://github.com/Fir3Fly1995/SRSBot/Verifier.py               -->     %localappdata%\SRSBot\Verifier.py
+                https://github.com/Fir3Fly1995/SRSBot/dist/SRSRecovery.exe      -->     %localappdata%\SRSRecovery\SRS_Recover.exe
+
+        Step 5: Update the unins000.dat file to include the updated items (in the event the user wishes to remove the SRSBot Suite)
+        Step 6: Prompt the user if they wish to return to the launcher
+            If yes --> open launcher.exe and close package_manager.exe
+            if no  --> dismiss dialogue box and do nothing.
+    Button 2:   "Uninstall Bot"
+        Step 1: Open dialogue box to prompt the user if thay are sure they wish to proceed
+            If yes
+                Stage 1:    copy the bot_items directory to the users desktop and open a dialogue box "Your Launcher token, channel and roles have been placed in a Bot Items folder on your desktop\nAre you sure you wish to proceed.\nThere is no turning back if you do. 2 buttons, "Proceed" and "Abort"
+                Stage 2:    If "Proceed"
+                    Step 1: Dismiss prompt
+                    Step 2: Update unins000.dat to include the the entire %localappdata%\SRSBot directory.
+                    Step 3: Launch unins000.exe
+                    Step 4: Force close package_manager.exe and any other running processes from within the SRSBot folder (except unins000.exe)
+                Stage 2a:   If "Abort"
+                    Step 1: Prompt user "We have restored your Bot Items files."
+                    Step 2: Delete the Bot Items folder from the users desktop
+                    Step 3: Dismiss the dialogue box after user clicks "OK"
+                    Step 4: Abort the launch of unins000.exe
+            If no  --> dismiss the prompt and do nothing. 
+    Button 3:   "Share Bot"
+        Step 1: Open Dialogue box: "Would you like to share a link or the installer?"
+            User presses "Share Link" --> put the link into the users clipboard for https://github.com/Fir3Fly1995/SRSBot
+            User presses "Share file" --> go to https://github.com/Fir3Fly1995/SRSBot and start he download for the installer from the packages section.
+            User presses "Never Mind" --> Dismiss dialogue box and do nothing. 
+    Button 4:   "Quit"
+        Step 1: Quit package_manager.exe
+    Button 5:   "Recovery"
+        Step 1: Dialogue Box "You are about to start the bot recovery process. Continue?" 
+            User presses "Yes" open SRS-Recover.exe and close dialogue box then package_manager.exe (Double check that Verifier.py is not running and check that Launcher.exe is not running. If they are, terminate them.)
+            User presses "no"  Dismiss dialogue and do nothing. 
+    Button 6:   "Return to launcher"
+        Step 1: Run Launcher.exe
+        Step 2: terminate package_manager.exe
+
+
+
+Launcher.exe will not change its behavior or functionality other than - Log to %localappdata%\SRSBot\Log_Files\BotLauncher.log
+    Rename the Package Manager button to Manage installation
+    Adjust all buttons to be the same width and centered, one each side. 
+    Add a fifth button "Stop Bot" in the middle below the 4 buttons, spanning the total width of the 4 buttons. (basically, keep it alligned and centered)
+
+    "Manage Installation" button functionality
+        On click:
+        Step 1: Check to see if the Package Manager is in the manifest.txt file on GitHub. If the timestamp is unchanged proceed to step 1a
+            Step 1a: update the local manifest.txt file entry found at %localappdata%\SRSRecovery\Files\manifest.txt for the package manager then proceed to Step 2. 
+        Step 2: Download the package_manager.exe in place at %localappdata%\SRSBot\dist\package_manager.exe from GitHub
+        Step 3: Run package_manager.exe from SRSBot\dist\package_manager.exe
+        Step 4: Close launcher.exe
+
+We will tackle the Verifier.py file as necessary! 

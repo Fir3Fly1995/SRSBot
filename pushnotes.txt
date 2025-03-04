@@ -78,3 +78,4 @@ Nr. 67 - Forgot to install the srsenv shit.                         Can happen t
 Nr. 68 - Cant revert, going to go nuclear!                          I hate that this really does not want to work at all... but, hey, thats life. 
 Nr. 69 - Nuclear run complete. Starting fresh, and repairing damage I hope! 
 Nr. 70 - Setting up emergency recovery and preparing file structure This should assist with app functionality
+Nr. 71 - Reset layout in notes.txt                                  This should ensure exact mirroring... of what I hear you ask??? Of the grains of sand in the desert! 
