@@ -107,3 +107,41 @@ Launcher.exe will not change its behavior or functionality other than - Log to %
         Step 4: Close launcher.exe
 
 We will tackle the Verifier.py file as necessary! 
+
+
+
+Current directory structure on Build machine for reference to all actions
+SRSBot\
+    build\exe.win-amd64-3.8
+        lib\
+        site-packages\
+        frozen-application-license.txt
+        Launcher.exe
+        Package_manager.exe
+        python38.dll
+        SRS_Recover.exe
+Imagery
+    BotIcon.ico
+    SRS Discord Logo.png
+    SRS Logo Official.jpg
+    SRSLogo.ico
+Log_Files\
+Removers
+    unins000.exe
+    unins000.dat
+srs_env --> The virtual environment
+.gitattributes
+issues.txt
+Launcher.py
+notes.txt --> This file
+package_manager.py
+pushnotes.txt
+Replace_Files.py --> Only used in the TEM
+requirements.txt
+setup.py
+SRS_Recover.py
+SRSBot VSCode.code-workspace --> For VSCode only... lol
+srsinstall.iss
+Verifier.py
+
+There are stuff we dont need to worry about, this is to illustrate basically what the local file structure is, so stuff can be updated and in sync.

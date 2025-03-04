@@ -5,3 +5,6 @@ pyperclip
 requests
 bs4
 py2exe
+httpx
+aiohttp
+certifi

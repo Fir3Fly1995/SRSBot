@@ -81,3 +81,4 @@ Nr. 70 - Setting up emergency recovery and preparing file structure This should 
 Nr. 71 - Reset layout in notes.txt                                  This should ensure exact mirroring... of what I hear you ask??? Of the grains of sand in the desert! 
 Nr. 72 - Unable to package app files                                This is going to take a battle and a half to rectify, I think...
 Nr. 73 - Rolled back to Python 3.8 and rebuilt                      Will it work??? We may never know!
+Nr. 74 - A Push to check the structure on GitHub                    Got to check the github!
