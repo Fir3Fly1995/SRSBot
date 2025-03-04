@@ -9,26 +9,45 @@ Compression=lzma
 SolidCompression=yes
 
 [Files]
-Source: "C:\Users\Alex Edwards\Documents\GitHub\SRSBot\dist\Launcher.exe"; DestDir: "{localappdata}\SRSBot\bot_files"; Flags: ignoreversion
-Source: "C:\Users\Alex Edwards\Documents\GitHub\SRSBot\dist\package_manager.exe"; DestDir: "{localappdata}\SRSBot\Updater"; Flags: ignoreversion
-Source: "C:\Users\Alex Edwards\Documents\GitHub\SRSBot\Verifier.py"; DestDir: "{localappdata}\SRSBot\bot_files"; Flags: ignoreversion
-Source: "C:\Users\Alex Edwards\Documents\GitHub\SRSBot\srsenv\*"; DestDir: "{localappdata}\SRSBot\bot_files\srsenv"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "C:\Users\Alex Edwards\Documents\GitHub\SRSBot\imagery\boticon.ico"; DestDir: "{localappdata}\SRSBot\bot_files\Imagery"; Flags: ignoreversion
-Source: "C:\Users\Alex Edwards\Documents\GitHub\SRSBot\imagery\SRSLogo.ico"; DestDir: "{localappdata}\SRSBot\bot_files\Imagery"; Flags: ignoreversion
-Source: "C:\Users\Alex Edwards\Documents\GitHub\SRSBot\imagery\SRS Discord Logo.png"; DestDir: "{localappdata}\SRSBot\bot_files\Imagery"; Flags: ignoreversion
-Source: "C:\Users\Alex Edwards\Documents\GitHub\SRSBot\imagery\SRS Logo Official.jpg"; DestDir: "{localappdata}\SRSBot\bot_files\Imagery"; Flags: ignoreversion
-Source: "C:\Users\Alex Edwards\Downloads\python-3.13.2-amd64.exe"; DestDir: "{localappdata}\Temp\SRSBotPy"; Flags: ignoreversion
+Source: "C:\Users\Alex Edwards\Documents\GitHub\SRSBot\dist\Launcher.exe"; DestDir: "{localappdata}\SRSBot\dist"; Flags: ignoreversion
+Source: "C:\Users\Alex Edwards\Documents\GitHub\SRSBot\dist\Package_manager.exe"; DestDir: "{localappdata}\SRSBot\dist"; Flags: ignoreversion
+Source: "C:\Users\Alex Edwards\Documents\GitHub\SRSBot\dist\SRS_Recover.exe"; DestDir: "{localappdata}\SRSRecovery"; Flags: ignoreversion
+Source: "C:\Users\Alex Edwards\Documents\GitHub\SRSBot\Verifier.py"; DestDir: "{localappdata}\SRSBot"; Flags: ignoreversion
+Source: "C:\Users\Alex Edwards\Documents\GitHub\SRSBot\srsenv\*"; DestDir: "{localappdata}\SRSBot\srsenv"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "C:\Users\Alex Edwards\Documents\GitHub\SRSBot\Imagery\BotIcon.ico"; DestDir: "{localappdata}\SRSBot\Imagery"; Flags: ignoreversion
+Source: "C:\Users\Alex Edwards\Documents\GitHub\SRSBot\Imagery\SRS Discord Logo.png"; DestDir: "{localappdata}\SRSBot\Imagery"; Flags: ignoreversion
+Source: "C:\Users\Alex Edwards\Documents\GitHub\SRSBot\Imagery\SRS Logo Official.jpg"; DestDir: "{localappdata}\SRSBot\Imagery"; Flags: ignoreversion
+Source: "C:\Users\Alex Edwards\Documents\GitHub\SRSBot\Imagery\SRSLogo.ico"; DestDir: "{localappdata}\SRSBot\Imagery"; Flags: ignoreversion
 
 [Dirs]
 Name: "{localappdata}\SRSBot\Updater"
+Name: "{localappdata}\SRSBot\Log_Files"
 
 [Icons]
-Name: "{group}\SRSBot Launcher"; Filename: "{localappdata}\SRSBot\bot_files\Launcher.exe"
-Name: "{commondesktop}\SRSBot Launcher"; Filename: "{localappdata}\SRSBot\bot_files\Launcher.exe"; IconFilename: "{localappdata}\SRSBot\bot_files\Imagery\boticon.ico"
+Name: "{group}\SRSBot Launcher"; Filename: "{localappdata}\SRSBot\dist\Launcher.exe"
+Name: "{commondesktop}\SRSBot Launcher"; Filename: "{localappdata}\SRSBot\dist\Launcher.exe"; IconFilename: "{localappdata}\SRSBot\Imagery\BotIcon.ico"
 
 [Run]
-Filename: "{localappdata}\Temp\SRSBotPy\python-3.13.2-amd64.exe"; Parameters: "/quiet InstallAllUsers=1 PrependPath=1"; StatusMsg: "Installing Python..."; Flags: waituntilterminated
-Filename: "{localappdata}\SRSBot\bot_files\Launcher.exe"; Description: "Launch SRSBot"; Flags: nowait postinstall skipifsilent
+Filename: "{localappdata}\SRSBot\dist\Launcher.exe"; Description: "Launch SRSBot"; Flags: nowait postinstall skipifsilent
+
+[UninstallDelete]
+Type: files; Name: "{localappdata}\SRSBot\dist\Launcher.exe"
+Type: files; Name: "{localappdata}\SRSBot\dist\Package_manager.exe"
+Type: files; Name: "{localappdata}\SRSRecovery\SRS_Recover.exe"
+Type: files; Name: "{localappdata}\SRSBot\Verifier.py"
+Type: files; Name: "{localappdata}\SRSBot\srsenv\*"
+Type: files; Name: "{localappdata}\SRSBot\Imagery\BotIcon.ico"
+Type: files; Name: "{localappdata}\SRSBot\Imagery\SRS Discord Logo.png"
+Type: files; Name: "{localappdata}\SRSBot\Imagery\SRS Logo Official.jpg"
+Type: files; Name: "{localappdata}\SRSBot\Imagery\SRSLogo.ico"
+Type: files; Name: "{localappdata}\SRSBot\Log_Files\*"
+Type: dirifempty; Name: "{localappdata}\SRSBot\Updater"
+Type: dirifempty; Name: "{localappdata}\SRSBot\Log_Files"
+Type: dirifempty; Name: "{localappdata}\SRSBot\dist"
+Type: dirifempty; Name: "{localappdata}\SRSBot\Imagery"
+Type: dirifempty; Name: "{localappdata}\SRSBot\srsenv"
+Type: dirifempty; Name: "{localappdata}\SRSBot"
+Type: dirifempty; Name: "{localappdata}\SRSRecovery"
 
 [Code]
 const
@@ -39,6 +58,13 @@ procedure CurStepChanged(CurStep: TSetupStep);
 begin
   if CurStep = ssPostInstall then
   begin
-    // Any post-installation steps can be added here if needed
+    // Check for the presence of %localappdata%\Temp\SRSLog\rcvr.log
+    if FileExists(ExpandConstant('{localappdata}\Temp\SRSLog\rcvr.log')) then
+    begin
+      // Move the rcvr.log file to %localappdata%\SRSBot\Log_Files\rcvr.log
+      MoveFile(ExpandConstant('{localappdata}\Temp\SRSLog\rcvr.log'), ExpandConstant('{localappdata}\SRSBot\Log_Files\rcvr.log'));
+      // Delete the %localappdata%\Temp\SRSLog directory
+      DelTree(ExpandConstant('{localappdata}\Temp\SRSLog'), True, True, True);
+    end;
   end;
 end;
