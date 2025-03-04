@@ -2,7 +2,7 @@
 
 
 a = Analysis(
-    ['Package_manager.py'],
+    ['package_manager.py'],
     pathex=[],
     binaries=[],
     datas=[],
@@ -22,7 +22,7 @@ exe = EXE(
     a.binaries,
     a.datas,
     [],
-    name='Package_manager',
+    name='package_manager',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
@@ -35,5 +35,4 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon=['imagery\\BotIcon.ico'],
 )

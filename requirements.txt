@@ -1,8 +1,7 @@
-pip
 discord.py
 beautifulsoup4
 asyncio
 pyperclip
 requests
 bs4
-pyinstaller
+py2exe

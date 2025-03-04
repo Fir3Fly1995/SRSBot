@@ -10,6 +10,7 @@ import ssl
 import queue
 import time
 import threading
+import os
 
 # Define the paths to the variable files
 bot_items_dir = os.path.join(os.getenv('LOCALAPPDATA'), 'SRSBot', 'Bot_Items')
